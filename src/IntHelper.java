@@ -1,5 +1,8 @@
 public class IntHelper {
     public static boolean isLog2(int num) {
+        if (num<1) {
+            return false;
+        }
         while (num > 1) {
             if (num % 2 != 0) {
                 return false;
@@ -10,6 +13,9 @@ public class IntHelper {
     }
 
     public static boolean isLog10(int num) {
+        if (num < 1) {
+            return false;
+        }
         while (num > 1) {
             if (num % 10 != 0) {
                 return false;
@@ -92,6 +98,9 @@ public class IntHelper {
      * @return The result of base raised to the power of exponent.
      */
     public static int power(int base, int exponent) {
+        if (exponent < 0) {
+            throw new ArithmeticException("Negative exponent");
+        }
         long result = 1;
         for (int i = 0; i < exponent; i++) {
             result *= base;
@@ -157,6 +166,11 @@ public class IntHelper {
      * @return The greatest common divisor of a and b.
      */
     public static int gcd(int a, int b) {
+        if (a==b && a==0) {
+            throw new ArithmeticException("No denominator for 0");
+        }
+        a = abs(a);
+        b = abs(b);
         while (b != 0) {
             int temp = b;
             b = a % b;
@@ -164,6 +178,8 @@ public class IntHelper {
         }
         return a;
     }
+
+
 
     /**
      * Computes the least common multiple of two numbers.
@@ -173,6 +189,8 @@ public class IntHelper {
      * @return The least common multiple of a and b.
      */
     public static int lcm(int a, int b) {
+        a = abs(a);
+        b = abs(b);
         return a * (b / gcd(a, b));
     }
 
@@ -239,4 +257,45 @@ public class IntHelper {
     public static int min(int a, int b) {
         return (a < b) ? a : b;
     }
+
+    public static void main(String[] args) {
+        System.out.println(power(10, -2));
+    }
+
+
+
+
+
+
+
+    public static int square(int n) {
+        int square = n*n;
+        return square;
+    }
+
+    public static int sumOfSquares(int a, int b) {
+        int aSquared = square(a);
+        int bSquared = square(b);
+        int sum = aSquared + bSquared;
+
+        return sum;
+    }
+
+    public static int cube(int n) {
+        return n*n*n;
+    }
+
+    public static int average(int a, int b, int c) {
+        // TODO
+        return (a+b+c)/3;
+    }
+
+    public static boolean isPythagoreanTriple(int a, int b, int c) {
+        int squareSum = sumOfSquares(a,b);
+        if (squareSum == square(c)) {
+            return true;
+        }
+        return false;
+    }
+
 }
