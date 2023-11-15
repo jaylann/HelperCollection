@@ -136,35 +136,126 @@ class IntHelperTest {
         assertEquals(20, IntHelper.lcm(-4, 5)); // One integer negative
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void isPrime() {
+        assertTrue(IntHelper.isPrime(2));
+        assertFalse(IntHelper.isPrime(4));
+        assertFalse(IntHelper.isPrime(0));
+        assertFalse(IntHelper.isPrime(1));
+        assertFalse(IntHelper.isPrime(-3));
+        // Additional tests for larger primes/non-primes
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void sqrt() {
+        assertEquals(4.0, IntHelper.sqrt(16));
+        assertEquals(5.0, IntHelper.sqrt(25));
+        assertNotEquals(5.0, IntHelper.sqrt(26));
+        assertEquals(0.0, IntHelper.sqrt(0));
+        assertEquals(1.0, IntHelper.sqrt(1));
+        assertThrows(IllegalArgumentException.class, () -> IntHelper.sqrt(-4));
+        // Test for NaN scenario if applicable
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void abs() {
+        assertEquals(5, IntHelper.abs(5));
+        assertEquals(5, IntHelper.abs(-5));
+        assertEquals(0, IntHelper.abs(0));
+        // Test for maximum/minimum integer values if applicable
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void fibonacci() {
+        assertEquals(0, IntHelper.fibonacci(0));
+        assertEquals(1, IntHelper.fibonacci(1));
+        assertEquals(1, IntHelper.fibonacci(2));
+        assertEquals(5, IntHelper.fibonacci(5));
+        assertThrows(IllegalArgumentException.class, () -> IntHelper.fibonacci(-1));
+        // Additional tests for higher fibonacci numbers
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void isPerfectNumber() {
+        assertTrue(IntHelper.isPerfectNumber(6));
+        assertFalse(IntHelper.isPerfectNumber(10));
+        assertFalse(IntHelper.isPerfectNumber(0));
+        assertFalse(IntHelper.isPerfectNumber(-6));
+        // Additional tests for larger perfect/non-perfect numbers
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void isPalindromeNumber() {
+        assertTrue(IntHelper.isPalindromeNumber(121));
+        assertFalse(IntHelper.isPalindromeNumber(123));
+        // Check how negative numbers are handled
+        // Additional tests for larger palindrome/non-palindrome numbers
     }
 
-    @org.junit.jupiter.api.Test
-    void max() {
+
+
+    @Test
+    void testSquare() {
+        assertEquals(9, IntHelper.square(3));
+        assertEquals(0, IntHelper.square(0));
+        assertEquals(1, IntHelper.square(-1));
+        assertEquals(Integer.MAX_VALUE, IntHelper.square(46341)); // Test for overflow
+        assertEquals(4, IntHelper.square(2));
+        assertEquals(16, IntHelper.square(-4));
+
+        assertEquals(9L, IntHelper.square(3L));
+        assertEquals(0L, IntHelper.square(0L));
+        assertEquals(1L, IntHelper.square(-1L));
+        assertEquals(Long.MAX_VALUE, IntHelper.square(3037000500L)); // Test for long overflow
+        assertEquals(4L, IntHelper.square(2L));
+        assertEquals(16L, IntHelper.square(-4L));
+    }
+    @Test
+    void testSumOfSquares() {
+        assertEquals(25, IntHelper.sumOfSquares(3, 4));
+        assertEquals(50, IntHelper.sumOfSquares(5, 5));
+        assertEquals(Integer.MAX_VALUE, IntHelper.sumOfSquares(46341, 46341)); // Test for overflow
+        assertEquals(0, IntHelper.sumOfSquares(0, 0));
+
+        assertEquals(25L, IntHelper.sumOfSquares(3L, 4L));
+        assertEquals(50L, IntHelper.sumOfSquares(5L, 5L));
+        assertEquals(Long.MAX_VALUE, IntHelper.sumOfSquares(3037000500L, 3037000500L)); // Test for long overflow
+        assertEquals(0L, IntHelper.sumOfSquares(0L, 0L));
+    }
+    @Test
+    void testCube() {
+        assertEquals(27, IntHelper.cube(3));
+        assertEquals(-27, IntHelper.cube(-3));
+        assertEquals(0, IntHelper.cube(0));
+        assertEquals(Integer.MAX_VALUE, IntHelper.cube(1291)); // Test for overflow
+        assertEquals(8, IntHelper.cube(2));
+
+        assertEquals(27L, IntHelper.cube(3L));
+        assertEquals(-27L, IntHelper.cube(-3L));
+        assertEquals(0L, IntHelper.cube(0L));
+        assertEquals(Long.MAX_VALUE, IntHelper.cube(2097152L)); // Test for long overflow
+        assertEquals(8L, IntHelper.cube(2L));
+    }
+    @Test
+    void testAverage() {
+        assertEquals(2, IntHelper.average(1, 2, 3));
+        assertEquals(-1, IntHelper.average(-3, -1, 1));
+        assertEquals(0, IntHelper.average(-1, 0, 1));
+        assertEquals(Integer.MAX_VALUE, IntHelper.average(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE));
+        assertEquals(Integer.MIN_VALUE, IntHelper.average(Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE));
+    }
+    @Test
+    void testIsPythagoreanTriple() {
+        assertTrue(IntHelper.isPythagoreanTriple(3, 4, 5));
+        assertFalse(IntHelper.isPythagoreanTriple(3, 4, 6));
+        assertFalse(IntHelper.isPythagoreanTriple(-3, 4, 5)); // Negative check
+        assertFalse(IntHelper.isPythagoreanTriple(0, 0, 0)); // Zero check
+        assertTrue(IntHelper.isPythagoreanTriple(5, 12, 13)); // False positive check
     }
 
-    @org.junit.jupiter.api.Test
-    void min() {
-    }
+
+
+
+
+
 }

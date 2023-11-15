@@ -207,6 +207,12 @@ public class IntHelper {
         return true;
     }
     public static double sqrt(int number) {
+        if (number <= 1 && number > -1){
+            return number;
+        }
+        if (number<0) {
+            throw new IllegalArgumentException("Cannot calculate sqrt of a negative number");
+        }
         double t;
         double squareRoot = number / 2;
         do {
@@ -224,6 +230,9 @@ public class IntHelper {
     }
 
     public static int fibonacci(int n) {
+        if (n<0) {
+            throw new IllegalArgumentException("Negative index");
+        }
         if (n <= 1) {
             return n;
         }
@@ -231,6 +240,9 @@ public class IntHelper {
     }
 
     public static boolean isPerfectNumber(int number) {
+        if (number <=0) {
+            return false;
+        }
         int sum = 0;
         for (int i = 1; i <= number / 2; i++) {
             if (number % i == 0) {
@@ -250,16 +262,10 @@ public class IntHelper {
         return original == reversed;
     }
 
-    public static int max(int a, int b) {
-        return (a > b) ? a : b;
-    }
 
-    public static int min(int a, int b) {
-        return (a < b) ? a : b;
-    }
 
     public static void main(String[] args) {
-        System.out.println(power(10, -2));
+        System.out.println(sqrt(0));
     }
 
 
@@ -269,33 +275,76 @@ public class IntHelper {
 
 
     public static int square(int n) {
-        int square = n*n;
-        return square;
+        if (n > 46340 || n < -46340) { // sqrt(Integer.MAX_VALUE) ≈ 46340
+            // Handle overflow case
+            return Integer.MAX_VALUE;
+        }
+        return n * n;
     }
 
     public static int sumOfSquares(int a, int b) {
         int aSquared = square(a);
         int bSquared = square(b);
-        int sum = aSquared + bSquared;
-
-        return sum;
+        if (aSquared == Integer.MAX_VALUE || bSquared == Integer.MAX_VALUE) {
+            // Handle overflow case
+            return Integer.MAX_VALUE;
+        }
+        long sum = (long) aSquared + (long) bSquared;
+        return sum > Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) sum;
     }
 
     public static int cube(int n) {
-        return n*n*n;
+        if (n > 1290 || n < -1290) { // cbrt(Integer.MAX_VALUE) ≈ 1290
+            // Handle overflow case
+            return Integer.MAX_VALUE;
+        }
+        return n * n * n;
     }
 
     public static int average(int a, int b, int c) {
-        // TODO
-        return (a+b+c)/3;
+        // To prevent overflow, use long for intermediate sums
+        long sum = (long) a + (long) b + (long) c;
+        return (int) (sum / 3);
     }
 
     public static boolean isPythagoreanTriple(int a, int b, int c) {
-        int squareSum = sumOfSquares(a,b);
-        if (squareSum == square(c)) {
-            return true;
+        if (a <= 0 || b <= 0 || c <= 0) {
+            return false; // Pythagorean triples are defined for positive integers
         }
-        return false;
+        int squareSum = sumOfSquares(a, b);
+        return squareSum == square(c);
     }
+
+    public static long square(long n) {
+        if (n > 3037000499L || n < -3037000499L) { // sqrt(Long.MAX_VALUE) ≈ 3037000499
+            // Handle overflow case for long
+            return Long.MAX_VALUE;
+        }
+        return n * n;
+    }
+
+    public static long sumOfSquares(long a, long b) {
+        long aSquared = square(a);
+        long bSquared = square(b);
+        if (aSquared == Long.MAX_VALUE || bSquared == Long.MAX_VALUE) {
+            // Handle overflow case for long
+            return Long.MAX_VALUE;
+        }
+        long sum = aSquared + bSquared;
+        return sum < 0 ? Long.MAX_VALUE : sum; // Check for overflow
+    }
+
+    public static long cube(long n) {
+        if (n > 2097151L || n < -2097151L) { // cbrt(Long.MAX_VALUE) ≈ 2097151
+            // Handle overflow case for long
+            return Long.MAX_VALUE;
+        }
+        return n * n * n;
+    }
+
+// For average and isPythagoreanTriple, overloading with long isn't necessary
+// because they don't directly involve operations that could overflow.
+
+
 
 }
