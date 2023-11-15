@@ -1,7 +1,13 @@
+/*
+ * - Lanfermann, Justin (jaylann). "HelperCollection." GitHub repository.
+ *   https://github.com/jaylann/HelperCollection. 2023.
+ *
+ * This file is part of the "HelperCollection" project, developed and maintained by
+ * Justin Lanfermann (jaylann). For more information, updates, and terms of use,
+ * please visit the GitHub repository.
+ */
+
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -14,6 +20,7 @@ public class ArrayHelperTest {
 
         assertArrayEquals(new int[]{1}, ArrayHelper.addElement((int[]) null, 1)); // Null check
     }
+
     @Test
     void testAddElementDouble() {
 
@@ -22,6 +29,7 @@ public class ArrayHelperTest {
         assertArrayEquals(expectedArray, ArrayHelper.addElement(initialArray, 4));
         assertArrayEquals(new double[]{1}, ArrayHelper.addElement((double[]) null, 1)); // Null check
     }
+
     @Test
     void testAddElementLong() {
 
@@ -30,6 +38,7 @@ public class ArrayHelperTest {
         assertArrayEquals(expectedArray, ArrayHelper.addElement(initialArray, 4));
         assertArrayEquals(new long[]{1}, ArrayHelper.addElement((long[]) null, 1L)); // Null check
     }
+
     @Test
     void testAddElementChar() {
 
@@ -38,6 +47,7 @@ public class ArrayHelperTest {
         assertArrayEquals(expectedArray, ArrayHelper.addElement(initialArray, 'b'));
         assertArrayEquals(new char[]{'a'}, ArrayHelper.addElement((char[]) null, 'a')); // Null check
     }
+
     @Test
     void testAddElementByte() {
 

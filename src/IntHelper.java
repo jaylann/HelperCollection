@@ -1,4 +1,12 @@
-import java.util.Arrays;
+/*
+ * - Lanfermann, Justin (jaylann). "HelperCollection." GitHub repository.
+ *   https://github.com/jaylann/HelperCollection. 2023.
+ *
+ * This file is part of the "HelperCollection" project, developed and maintained by
+ * Justin Lanfermann (jaylann). For more information, updates, and terms of use,
+ * please visit the GitHub repository.
+ */
+
 
 public class IntHelper {
     public static boolean isLog2(int num) {
