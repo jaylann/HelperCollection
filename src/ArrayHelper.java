@@ -1,6 +1,7 @@
 /*
  * - Lanfermann, Justin (jaylann). "HelperCollection." GitHub repository.
- *   https://github.com/jaylann/HelperCollection. 2023.
+ *   https://github.com/jaylann/HelperCollection.
+ *   Last commit: Wed 15. Nov 2023 17:00
  *
  * This file is part of the "HelperCollection" project, developed and maintained by
  * Justin Lanfermann (jaylann). For more information, updates, and terms of use,
@@ -1908,4 +1909,1051 @@ public class ArrayHelper {
             destination[i] = source[i];
         }
     }
+
+    public static int getFirstFreeElement(float[] a) {
+        if (a == null) return -1;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] == 0) {
+                return i;
+            }
+        }
+        return a.length;
+    }
+    public static int getFirstFreeElement(long[] a) {
+        if (a == null) return -1;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] == 0) {
+                return i;
+            }
+        }
+        return a.length;
+    }
+    public static int getFirstFreeElement(double[] a) {
+        if (a == null) return -1;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] == 0) {
+                return i;
+            }
+        }
+        return a.length;
+    }
+    public static int getFirstFreeElement(int[] a) {
+        if (a == null) return -1;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] == 0) {
+                return i;
+            }
+        }
+        return a.length;
+    }
+    public static int getFirstFreeElement(String[] a) {
+        if (a == null) return -1;
+        for (int i = 0; i < a.length; i++) {
+            if (Objects.equals(a[i], "")) {
+                return i;
+            }
+        }
+        return a.length;
+    }
+    public static int getFirstFreeElement(char[] a) {
+        if (a == null) return -1;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] == 0) {
+                return i;
+            }
+        }
+        return a.length;
+    }
+    public static int getFirstFreeElement(byte[] a) {
+        if (a == null) return -1;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] == 0) {
+                return i;
+            }
+        }
+        return a.length;
+    }
+
+    public static boolean isArrayEqual(float[] a, float[] b) {
+        if (a == null || b == null) return false;
+        if (a.length != b.length) {
+            return false;
+        }
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] != b[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public static boolean isArrayEqual(long[] a, long[] b) {
+        if (a == null || b == null) return false;
+        if (a.length != b.length) {
+            return false;
+        }
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] != b[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public static boolean isArrayEqual(int[] a, int[] b) {
+        if (a == null || b == null) return false;
+        if (a.length != b.length) {
+            return false;
+        }
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] != b[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public static boolean isArrayEqual(double[] a, double[] b) {
+        if (a == null || b == null) return false;
+        if (a.length != b.length) {
+            return false;
+        }
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] != b[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public static boolean isArrayEqual(String[] a, String[] b) {
+        if (a == null || b == null) return false;
+        if (a.length != b.length) {
+            return false;
+        }
+        for (int i = 0; i < a.length; i++) {
+            if (!Objects.equals(a[i], b[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public static boolean isArrayEqual(byte[] a, byte[] b) {
+        if (a == null || b == null) return false;
+        if (a.length != b.length) {
+            return false;
+        }
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] != b[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public static boolean isArrayEqual(char[] a, char[] b) {
+        if (a == null || b == null) return false;
+        if (a.length != b.length) {
+            return false;
+        }
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] != b[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static float[] removeDuplicates(float[] original) {
+        if (original == null || original.length == 0) return original;
+
+        float[] temp = new float[original.length];
+        int count = 0;
+
+        for (float element : original) {
+            if (findElement(temp, element) == -1 || count == 0) {
+                temp[count++] = element;
+            }
+        }
+
+        float[] unique = new float[count];
+        copyArray(temp, unique, count);
+        return unique;
+    }
+    public static long[] removeDuplicates(long[] original) {
+        if (original == null || original.length == 0) return original;
+
+        long[] temp = new long[original.length];
+        int count = 0;
+
+        for (long element : original) {
+            if (findElement(temp, element) == -1 || count == 0) {
+                temp[count++] = element;
+            }
+        }
+
+        long[] unique = new long[count];
+        copyArray(temp, unique, count);
+        return unique;
+    }
+    public static double[] removeDuplicates(double[] original) {
+        if (original == null || original.length == 0) return original;
+
+        double[] temp = new double[original.length];
+        int count = 0;
+
+        for (double element : original) {
+            if (findElement(temp, element) == -1 || count == 0) {
+                temp[count++] = element;
+            }
+        }
+
+        double[] unique = new double[count];
+        copyArray(temp, unique, count);
+        return unique;
+    }
+    public static int[] removeDuplicates(int[] original) {
+        if (original == null || original.length == 0) return original;
+
+        int[] temp = new int[original.length];
+        int count = 0;
+
+        for (int element : original) {
+            if (findElement(temp, element) == -1 || count == 0) {
+                temp[count++] = element;
+            }
+        }
+
+        int[] unique = new int[count];
+        copyArray(temp, unique, count);
+        return unique;
+    }
+    public static String[] removeDuplicates(String[] original) {
+        if (original == null || original.length == 0) return original;
+
+        String[] temp = new String[original.length];
+        int count = 0;
+
+        for (String element : original) {
+            if (findElement(temp, element) == -1 || count == 0) {
+                temp[count++] = element;
+            }
+        }
+
+        String[] unique = new String[count];
+        copyArray(temp, unique, count);
+        return unique;
+    }
+    public static char[] removeDuplicates(char[] original) {
+        if (original == null || original.length == 0) return original;
+
+        char[] temp = new char[original.length];
+        int count = 0;
+
+        for (char element : original) {
+            if (findElement(temp, element) == -1 || count == 0) {
+                temp[count++] = element;
+            }
+        }
+
+        char[] unique = new char[count];
+        copyArray(temp, unique, count);
+        return unique;
+    }
+    public static byte[] removeDuplicates(byte[] original) {
+        if (original == null || original.length == 0) return original;
+
+        byte[] temp = new byte[original.length];
+        int count = 0;
+
+        for (byte element : original) {
+            if (findElement(temp, element) == -1 || count == 0) {
+                temp[count++] = element;
+            }
+        }
+
+        byte[] unique = new byte[count];
+        copyArray(temp, unique, count);
+        return unique;
+    }
+
+    public static float[][] removeDuplicates(float[][] original) {
+        if (original == null || original.length == 0) return original;
+
+        float[][] temp = new float[original.length][];
+        int count = 0;
+
+        for (float[] element : original) {
+            if (!containsArray2D(temp, element, count)) {
+                temp[count++] = element;
+            }
+        }
+
+        float[][] unique = new float[count][];
+        for (int i = 0; i < count; i++) {
+            unique[i] = new float[temp[i].length];
+            copyArray(temp[i], unique[i], temp[i].length);
+        }
+        return unique;
+    }
+    public static long[][] removeDuplicates(long[][] original) {
+        if (original == null || original.length == 0) return original;
+
+        long[][] temp = new long[original.length][];
+        int count = 0;
+
+        for (long[] element : original) {
+            if (!containsArray2D(temp, element, count)) {
+                temp[count++] = element;
+            }
+        }
+
+        long[][] unique = new long[count][];
+        for (int i = 0; i < count; i++) {
+            unique[i] = new long[temp[i].length];
+            copyArray(temp[i], unique[i], temp[i].length);
+        }
+        return unique;
+    }
+    public static double[][] removeDuplicates(double[][] original) {
+        if (original == null || original.length == 0) return original;
+
+        double[][] temp = new double[original.length][];
+        int count = 0;
+
+        for (double[] element : original) {
+            if (!containsArray2D(temp, element, count)) {
+                temp[count++] = element;
+            }
+        }
+
+        double[][] unique = new double[count][];
+        for (int i = 0; i < count; i++) {
+            unique[i] = new double[temp[i].length];
+            copyArray(temp[i], unique[i], temp[i].length);
+        }
+        return unique;
+    }
+    public static int[][] removeDuplicates(int[][] original) {
+        if (original == null || original.length == 0) return original;
+
+        int[][] temp = new int[original.length][];
+        int count = 0;
+
+        for (int[] element : original) {
+            if (!containsArray2D(temp, element, count)) {
+                temp[count++] = element;
+            }
+        }
+
+        int[][] unique = new int[count][];
+        for (int i = 0; i < count; i++) {
+            unique[i] = new int[temp[i].length];
+            copyArray(temp[i], unique[i], temp[i].length);
+        }
+        return unique;
+    }
+    public static String[][] removeDuplicates(String[][] original) {
+        if (original == null || original.length == 0) return original;
+
+        String[][] temp = new String[original.length][];
+        int count = 0;
+
+        for (String[] element : original) {
+            if (!containsArray2D(temp, element, count)) {
+                temp[count++] = element;
+            }
+        }
+
+        String[][] unique = new String[count][];
+        for (int i = 0; i < count; i++) {
+            unique[i] = new String[temp[i].length];
+            copyArray(temp[i], unique[i], temp[i].length);
+        }
+        return unique;
+    }
+    public static char[][] removeDuplicates(char[][] original) {
+        if (original == null || original.length == 0) return original;
+
+        char[][] temp = new char[original.length][];
+        int count = 0;
+
+        for (char[] element : original) {
+            if (!containsArray2D(temp, element, count)) {
+                temp[count++] = element;
+            }
+        }
+
+        char[][] unique = new char[count][];
+        for (int i = 0; i < count; i++) {
+            unique[i] = new char[temp[i].length];
+            copyArray(temp[i], unique[i], temp[i].length);
+        }
+        return unique;
+    }
+    public static byte[][] removeDuplicates(byte[][] original) {
+        if (original == null || original.length == 0) return original;
+
+        byte[][] temp = new byte[original.length][];
+        int count = 0;
+
+        for (byte[] element : original) {
+            if (!containsArray2D(temp, element, count)) {
+                temp[count++] = element;
+            }
+        }
+
+        byte[][] unique = new byte[count][];
+        for (int i = 0; i < count; i++) {
+            unique[i] = new byte[temp[i].length];
+            copyArray(temp[i], unique[i], temp[i].length);
+        }
+        return unique;
+    }
+
+    public static boolean containsArray2D(float[][] array, float[] element, int length) {
+        for (int i = 0; i < length; i++) {
+            if (isArrayEqual(array[i], element)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public static boolean containsArray2D(long[][] array, long[] element, int length) {
+        for (int i = 0; i < length; i++) {
+            if (isArrayEqual(array[i], element)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public static boolean containsArray2D(double[][] array, double[] element, int length) {
+        for (int i = 0; i < length; i++) {
+            if (isArrayEqual(array[i], element)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public static boolean containsArray2D(int[][] array, int[] element, int length) {
+        for (int i = 0; i < length; i++) {
+            if (isArrayEqual(array[i], element)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public static boolean containsArray2D(String[][] array, String[] element, int length) {
+        for (int i = 0; i < length; i++) {
+            if (isArrayEqual(array[i], element)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public static boolean containsArray2D(char[][] array, char[] element, int length) {
+        for (int i = 0; i < length; i++) {
+            if (isArrayEqual(array[i], element)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public static boolean containsArray2D(byte[][] array, byte[] element, int length) {
+        for (int i = 0; i < length; i++) {
+            if (isArrayEqual(array[i], element)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void swap(float[] a, int firstPos, int secondPos) {
+        // Check if the array is null
+        if (a == null) {
+            throw new IllegalArgumentException("Array must not be null.");
+        }
+
+        // Check if positions are within the array bounds
+        if (firstPos < 0 || firstPos >= a.length || secondPos < 0 || secondPos >= a.length) {
+            throw new IllegalArgumentException("Position out of array bounds.");
+        }
+
+        // Check if the positions are the same
+        if (firstPos == secondPos) {
+            return;
+        }
+
+        // Swap the elements
+        float temp = a[firstPos];
+        a[firstPos] = a[secondPos];
+        a[secondPos] = temp;
+    }
+    public static void swap(int[] a, int firstPos, int secondPos) {
+        // Check if the array is null
+        if (a == null) {
+            throw new IllegalArgumentException("Array must not be null.");
+        }
+
+        // Check if positions are within the array bounds
+        if (firstPos < 0 || firstPos >= a.length || secondPos < 0 || secondPos >= a.length) {
+            throw new IllegalArgumentException("Position out of array bounds.");
+        }
+
+        // Check if the positions are the same
+        if (firstPos == secondPos) {
+            return;
+        }
+
+        // Swap the elements
+        int temp = a[firstPos];
+        a[firstPos] = a[secondPos];
+        a[secondPos] = temp;
+    }
+    public static void swap(long[] a, int firstPos, int secondPos) {
+        // Check if the array is null
+        if (a == null) {
+            throw new IllegalArgumentException("Array must not be null.");
+        }
+
+        // Check if positions are within the array bounds
+        if (firstPos < 0 || firstPos >= a.length || secondPos < 0 || secondPos >= a.length) {
+            throw new IllegalArgumentException("Position out of array bounds.");
+        }
+
+        // Check if the positions are the same
+        if (firstPos == secondPos) {
+            return;
+        }
+
+        // Swap the elements
+        long temp = a[firstPos];
+        a[firstPos] = a[secondPos];
+        a[secondPos] = temp;
+    }
+    public static void swap(double[] a, int firstPos, int secondPos) {
+        // Check if the array is null
+        if (a == null) {
+            throw new IllegalArgumentException("Array must not be null.");
+        }
+
+        // Check if positions are within the array bounds
+        if (firstPos < 0 || firstPos >= a.length || secondPos < 0 || secondPos >= a.length) {
+            throw new IllegalArgumentException("Position out of array bounds.");
+        }
+
+        // Check if the positions are the same
+        if (firstPos == secondPos) {
+            return;
+        }
+
+        // Swap the elements
+        double temp = a[firstPos];
+        a[firstPos] = a[secondPos];
+        a[secondPos] = temp;
+    }
+    public static void swap(char[] a, int firstPos, int secondPos) {
+        // Check if the array is null
+        if (a == null) {
+            throw new IllegalArgumentException("Array must not be null.");
+        }
+
+        // Check if positions are within the array bounds
+        if (firstPos < 0 || firstPos >= a.length || secondPos < 0 || secondPos >= a.length) {
+            throw new IllegalArgumentException("Position out of array bounds.");
+        }
+
+        // Check if the positions are the same
+        if (firstPos == secondPos) {
+            return;
+        }
+
+        // Swap the elements
+        char temp = a[firstPos];
+        a[firstPos] = a[secondPos];
+        a[secondPos] = temp;
+    }
+    public static void swap(byte[] a, int firstPos, int secondPos) {
+        // Check if the array is null
+        if (a == null) {
+            throw new IllegalArgumentException("Array must not be null.");
+        }
+
+        // Check if positions are within the array bounds
+        if (firstPos < 0 || firstPos >= a.length || secondPos < 0 || secondPos >= a.length) {
+            throw new IllegalArgumentException("Position out of array bounds.");
+        }
+
+        // Check if the positions are the same
+        if (firstPos == secondPos) {
+            return;
+        }
+
+        // Swap the elements
+        byte temp = a[firstPos];
+        a[firstPos] = a[secondPos];
+        a[secondPos] = temp;
+    }
+    public static void swap(String[] a, int firstPos, int secondPos) {
+        // Check if the array is null
+        if (a == null) {
+            throw new IllegalArgumentException("Array must not be null.");
+        }
+
+        // Check if positions are within the array bounds
+        if (firstPos < 0 || firstPos >= a.length || secondPos < 0 || secondPos >= a.length) {
+            throw new IllegalArgumentException("Position out of array bounds.");
+        }
+
+        // Check if the positions are the same
+        if (firstPos == secondPos) {
+            return;
+        }
+
+        // Swap the elements
+        String temp = a[firstPos];
+        a[firstPos] = a[secondPos];
+        a[secondPos] = temp;
+    }
+
+    public static boolean isInHorizontal(char[][] letterGrid, char[] word) {
+        for (int i = 0; i < letterGrid.length; i++) {
+            for (int j = 0; j <= letterGrid[i].length - word.length; j++) {
+                int k;
+                for (k = 0; k < word.length; k++) {
+                    if (letterGrid[i][j + k] != word[k]) {
+                        break;
+                    }
+                }
+                if (k == word.length) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public static boolean isInVertical(char[][] letterGrid, char[] word) {
+        for (int i = 0; i <= letterGrid.length - word.length; i++) {
+            for (int j = 0; j < letterGrid[0].length; j++) {
+                int k;
+                for (k = 0; k < word.length; k++) {
+                    if (letterGrid[i + k][j] != word[k]) {
+                        break;
+                    }
+                }
+                if (k == word.length) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public static boolean isInDiagonal(char[][] letterGrid, char[] word) {
+        // Diagonal from top-left to bottom-right
+        for (int i = 0; i <= letterGrid.length - word.length; i++) {
+            for (int j = 0; j <= letterGrid[i].length - word.length; j++) {
+                int k;
+                for (k = 0; k < word.length; k++) {
+                    if (letterGrid[i + k][j + k] != word[k]) {
+                        break;
+                    }
+                }
+                if (k == word.length) {
+                    return true;
+                }
+            }
+        }
+        // Additional diagonals can be added here if needed (e.g., top-right to bottom-left)
+        return false;
+    }
+
+    public static float[][] minsAndMaxs(float[][] a) {
+        if (a == null) {
+            throw new IllegalArgumentException("Input array must not be null.");
+        }
+
+        float[][] result = new float[a.length][2];
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] == null || a[i].length == 0) {
+                result[i] = new float[]{Float.NaN, Float.NaN};  // Handle empty subarrays
+                continue;
+            }
+
+            float min = Float.MAX_VALUE;
+            float max = Float.MIN_VALUE;
+            for (float cur : a[i]) {
+                if (cur < min) {
+                    min = cur;
+                }
+                if (cur > max) {
+                    max = cur;
+                }
+            }
+            result[i] = new float[]{min, max};
+        }
+        return result;
+    }
+    public static long[][] minsAndMaxs(long[][] a) {
+        if (a == null) {
+            throw new IllegalArgumentException("Input array must not be null.");
+        }
+
+        long[][] result = new long[a.length][2];
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] == null || a[i].length == 0) {
+                result[i] = new long[]{};  // Handle empty subarrays
+                continue;
+            }
+
+            long min = Long.MAX_VALUE;
+            long max = Long.MIN_VALUE;
+            for (long cur : a[i]) {
+                if (cur < min) {
+                    min = cur;
+                }
+                if (cur > max) {
+                    max = cur;
+                }
+            }
+            result[i] = new long[]{min, max};
+        }
+        return result;
+    }
+    public static int[][] minsAndMaxs(int[][] a) {
+        if (a == null) {
+            throw new IllegalArgumentException("Input array must not be null.");
+        }
+
+        int[][] result = new int[a.length][2];
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] == null || a[i].length == 0) {
+                result[i] = new int[]{};  // Handle empty subarrays
+                continue;
+            }
+
+            int min = Integer.MAX_VALUE;
+            int max = Integer.MIN_VALUE;
+            for (int cur : a[i]) {
+                if (cur < min) {
+                    min = cur;
+                }
+                if (cur > max) {
+                    max = cur;
+                }
+            }
+            result[i] = new int[]{min, max};
+        }
+        return result;
+    }
+    public static double[][] minsAndMaxs(double[][] a) {
+        if (a == null) {
+            throw new IllegalArgumentException("Input array must not be null.");
+        }
+
+        double[][] result = new double[a.length][2];
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] == null || a[i].length == 0) {
+                result[i] = new double[]{Double.NaN, Double.NaN};  // Handle empty subarrays
+                continue;
+            }
+
+            double min = Double.MAX_VALUE;
+            double max = Double.MIN_VALUE;
+            for (double cur : a[i]) {
+                if (cur < min) {
+                    min = cur;
+                }
+                if (cur > max) {
+                    max = cur;
+                }
+            }
+            result[i] = new double[]{min, max};
+        }
+        return result;
+    }
+    public static byte[][] minsAndMaxs(byte[][] a) {
+        if (a == null) {
+            throw new IllegalArgumentException("Input array must not be null.");
+        }
+
+        byte[][] result = new byte[a.length][2];
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] == null || a[i].length == 0) {
+                result[i] = new byte[]{};  // Handle empty subarrays
+                continue;
+            }
+
+            byte min = Byte.MAX_VALUE;
+            byte max = Byte.MIN_VALUE;
+            for (byte cur : a[i]) {
+                if (cur < min) {
+                    min = cur;
+                }
+                if (cur > max) {
+                    max = cur;
+                }
+            }
+            result[i] = new byte[]{min, max};
+        }
+        return result;
+    }
+
+    public static float[][] transpose(float[][] a) {
+        if (a == null || a.length == 0 || a[0] == null) {
+            throw new IllegalArgumentException("Input array must not be null or empty.");
+        }
+
+        float[][] result = new float[a[0].length][a.length];
+        for (int i = 0; i < a[0].length; i++) {
+            for (int j = 0; j < a.length; j++) {
+                result[i][j] = a[j][i];
+            }
+        }
+        return result;
+    }
+    public static long[][] transpose(long[][] a) {
+        if (a == null || a.length == 0 || a[0] == null) {
+            throw new IllegalArgumentException("Input array must not be null or empty.");
+        }
+
+        long[][] result = new long[a[0].length][a.length];
+        for (int i = 0; i < a[0].length; i++) {
+            for (int j = 0; j < a.length; j++) {
+                result[i][j] = a[j][i];
+            }
+        }
+        return result;
+    }
+    public static int[][] transpose(int[][] a) {
+        if (a == null || a.length == 0 || a[0] == null) {
+            throw new IllegalArgumentException("Input array must not be null or empty.");
+        }
+
+        int[][] result = new int[a[0].length][a.length];
+        for (int i = 0; i < a[0].length; i++) {
+            for (int j = 0; j < a.length; j++) {
+                result[i][j] = a[j][i];
+            }
+        }
+        return result;
+    }
+    public static double[][] transpose(double[][] a) {
+        if (a == null || a.length == 0 || a[0] == null) {
+            throw new IllegalArgumentException("Input array must not be null or empty.");
+        }
+
+        double[][] result = new double[a[0].length][a.length];
+        for (int i = 0; i < a[0].length; i++) {
+            for (int j = 0; j < a.length; j++) {
+                result[i][j] = a[j][i];
+            }
+        }
+        return result;
+    }
+    public static String[][] transpose(String[][] a) {
+        if (a == null || a.length == 0 || a[0] == null) {
+            throw new IllegalArgumentException("Input array must not be null or empty.");
+        }
+
+        String[][] result = new String[a[0].length][a.length];
+        for (int i = 0; i < a[0].length; i++) {
+            for (int j = 0; j < a.length; j++) {
+                result[i][j] = a[j][i];
+            }
+        }
+        return result;
+    }
+    public static char[][] transpose(char[][] a) {
+        if (a == null || a.length == 0 || a[0] == null) {
+            throw new IllegalArgumentException("Input array must not be null or empty.");
+        }
+
+        char[][] result = new char[a[0].length][a.length];
+        for (int i = 0; i < a[0].length; i++) {
+            for (int j = 0; j < a.length; j++) {
+                result[i][j] = a[j][i];
+            }
+        }
+        return result;
+    }
+    public static byte[][] transpose(byte[][] a) {
+        if (a == null || a.length == 0 || a[0] == null) {
+            throw new IllegalArgumentException("Input array must not be null or empty.");
+        }
+
+        byte[][] result = new byte[a[0].length][a.length];
+        for (int i = 0; i < a[0].length; i++) {
+            for (int j = 0; j < a.length; j++) {
+                result[i][j] = a[j][i];
+            }
+        }
+        return result;
+    }
+
+    public static float[] linearize(float[][] a) {
+        if (a == null) {
+            throw new IllegalArgumentException("Input array must not be null.");
+        }
+
+        int newLen = 0;
+        for (float[] subArray : a) {
+            if (subArray != null) {
+                newLen += subArray.length;
+            }
+        }
+
+        float[] newArray = new float[newLen];
+        int totalIndex = 0;
+        for (float[] subArray : a) {
+            if (subArray != null) {
+                for (float value : subArray) {
+                    newArray[totalIndex++] = value;
+                }
+            }
+        }
+        return newArray;
+    }
+    public static long[] linearize(long[][] a) {
+        if (a == null) {
+            throw new IllegalArgumentException("Input array must not be null.");
+        }
+
+        int newLen = 0;
+        for (long[] subArray : a) {
+            if (subArray != null) {
+                newLen += subArray.length;
+            }
+        }
+
+        long[] newArray = new long[newLen];
+        int totalIndex = 0;
+        for (long[] subArray : a) {
+            if (subArray != null) {
+                for (long value : subArray) {
+                    newArray[totalIndex++] = value;
+                }
+            }
+        }
+        return newArray;
+    }
+    public static int[] linearize(int[][] a) {
+        if (a == null) {
+            throw new IllegalArgumentException("Input array must not be null.");
+        }
+
+        int newLen = 0;
+        for (int[] subArray : a) {
+            if (subArray != null) {
+                newLen += subArray.length;
+            }
+        }
+
+        int[] newArray = new int[newLen];
+        int totalIndex = 0;
+        for (int[] subArray : a) {
+            if (subArray != null) {
+                for (int value : subArray) {
+                    newArray[totalIndex++] = value;
+                }
+            }
+        }
+        return newArray;
+    }
+    public static double[] linearize(double[][] a) {
+        if (a == null) {
+            throw new IllegalArgumentException("Input array must not be null.");
+        }
+
+        int newLen = 0;
+        for (double[] subArray : a) {
+            if (subArray != null) {
+                newLen += subArray.length;
+            }
+        }
+
+        double[] newArray = new double[newLen];
+        int totalIndex = 0;
+        for (double[] subArray : a) {
+            if (subArray != null) {
+                for (double value : subArray) {
+                    newArray[totalIndex++] = value;
+                }
+            }
+        }
+        return newArray;
+    }
+    public static String[] linearize(String[][] a) {
+        if (a == null) {
+            throw new IllegalArgumentException("Input array must not be null.");
+        }
+
+        int newLen = 0;
+        for (String[] subArray : a) {
+            if (subArray != null) {
+                newLen += subArray.length;
+            }
+        }
+
+        String[] newArray = new String[newLen];
+        int totalIndex = 0;
+        for (String[] subArray : a) {
+            if (subArray != null) {
+                for (String value : subArray) {
+                    newArray[totalIndex++] = value;
+                }
+            }
+        }
+        return newArray;
+    }
+    public static char[] linearize(char[][] a) {
+        if (a == null) {
+            throw new IllegalArgumentException("Input array must not be null.");
+        }
+
+        int newLen = 0;
+        for (char[] subArray : a) {
+            if (subArray != null) {
+                newLen += subArray.length;
+            }
+        }
+
+        char[] newArray = new char[newLen];
+        int totalIndex = 0;
+        for (char[] subArray : a) {
+            if (subArray != null) {
+                for (char value : subArray) {
+                    newArray[totalIndex++] = value;
+                }
+            }
+        }
+        return newArray;
+    }
+    public static byte[] linearize(byte[][] a) {
+        if (a == null) {
+            throw new IllegalArgumentException("Input array must not be null.");
+        }
+
+        int newLen = 0;
+        for (byte[] subArray : a) {
+            if (subArray != null) {
+                newLen += subArray.length;
+            }
+        }
+
+        byte[] newArray = new byte[newLen];
+        int totalIndex = 0;
+        for (byte[] subArray : a) {
+            if (subArray != null) {
+                for (byte value : subArray) {
+                    newArray[totalIndex++] = value;
+                }
+            }
+        }
+        return newArray;
+    }
+
+
+
+
+
+
+
+
+
+
 }
