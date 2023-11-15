@@ -379,13 +379,25 @@ public class IntHelper {
         return result > Integer.MAX_VALUE || result < Integer.MIN_VALUE;
     }
 
+    // I know its not an int function but im to lazy to make a new class just for this so deal with it
+    public static boolean willLongMultiplyOverflow(long a, long b) {
+        // Zero case - no overflow
+        if (a == 0 || b == 0) {
+            return false;
+        }
 
+        // One and negative one cases - overflow only if other is beyond long range
+        if (a == 1 || a == -1) {
+            return false; // Multiplying by 1 or -1 doesn't cause overflow
+        }
+        if (b == 1 || b == -1) {
+            return false; // Multiplying by 1 or -1 doesn't cause overflow
+        }
 
-
-
-// For average and isPythagoreanTriple, overloading with long isn't necessary
-// because they don't directly involve operations that could overflow.
-
+        // Overflow check for other cases
+        long maxVal = Long.MAX_VALUE / (a > 0 ? a : -a);
+        return b > maxVal || b < -maxVal;
+    }
 
 
 }
