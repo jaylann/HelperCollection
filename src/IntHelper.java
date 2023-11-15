@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class IntHelper {
     public static boolean isLog2(int num) {
         if (num<1) {
@@ -265,7 +267,10 @@ public class IntHelper {
 
 
     public static void main(String[] args) {
-        System.out.println(sqrt(0));
+        char[] test = new char[]{'a', 'b', 'c'};
+        System.out.println(ArrayHelper.arrayContains(test, 'b'));
+        ArrayHelper.rotateArray(test, 2);
+        System.out.println(test);
     }
 
 
