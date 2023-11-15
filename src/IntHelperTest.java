@@ -265,9 +265,58 @@ class IntHelperTest {
 
     }
 
+    @Test
+    void testWillAddOverflow() {
+        // Test edge cases
+        assertTrue(IntHelper.willAddOverflow(Integer.MAX_VALUE, 1));
+        assertTrue(IntHelper.willAddOverflow(Integer.MIN_VALUE, -1));
+        assertFalse(IntHelper.willAddOverflow(Integer.MAX_VALUE, -1));
+        assertFalse(IntHelper.willAddOverflow(Integer.MIN_VALUE, 1));
 
+        // Test typical cases
+        assertFalse(IntHelper.willAddOverflow(100, 200));
+        assertFalse(IntHelper.willAddOverflow(-100, -200));
+        assertFalse(IntHelper.willAddOverflow(100, -200));
+        assertFalse(IntHelper.willAddOverflow(-100, 200));
 
+        // Test cases around zero
+        assertFalse(IntHelper.willAddOverflow(0, Integer.MAX_VALUE));
+        assertFalse(IntHelper.willAddOverflow(0, Integer.MIN_VALUE));
+        assertFalse(IntHelper.willAddOverflow(Integer.MAX_VALUE, 0));
+        assertFalse(IntHelper.willAddOverflow(Integer.MIN_VALUE, 0));
+    }
 
+    @Test
+    void testWillMultiplyOverflow() {
+        // Test edge cases
+        assertTrue(IntHelper.willMultiplyOverflow(Integer.MAX_VALUE, 2));
+        assertTrue(IntHelper.willMultiplyOverflow(Integer.MIN_VALUE, 2));
+        assertTrue(IntHelper.willMultiplyOverflow(Integer.MAX_VALUE / 2 + 1, 2));
+        assertTrue(IntHelper.willMultiplyOverflow(Integer.MIN_VALUE / 2 - 1, 2));
 
+        // Test typical cases
+        assertFalse(IntHelper.willMultiplyOverflow(100, 20));
+        assertFalse(IntHelper.willMultiplyOverflow(-100, 20));
+        assertFalse(IntHelper.willMultiplyOverflow(100, -20));
+        assertFalse(IntHelper.willMultiplyOverflow(-100, -20));
 
+        // Test cases with zero
+        assertFalse(IntHelper.willMultiplyOverflow(0, Integer.MAX_VALUE));
+        assertFalse(IntHelper.willMultiplyOverflow(0, Integer.MIN_VALUE));
+        assertFalse(IntHelper.willMultiplyOverflow(Integer.MAX_VALUE, 0));
+        assertFalse(IntHelper.willMultiplyOverflow(Integer.MIN_VALUE, 0));
+
+        // Test cases with one
+        assertFalse(IntHelper.willMultiplyOverflow(1, Integer.MAX_VALUE));
+        assertFalse(IntHelper.willMultiplyOverflow(1, Integer.MIN_VALUE));
+        assertFalse(IntHelper.willMultiplyOverflow(Integer.MAX_VALUE, 1));
+        assertFalse(IntHelper.willMultiplyOverflow(Integer.MIN_VALUE, 1));
+    }
 }
+
+
+
+
+
+
+

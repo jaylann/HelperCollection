@@ -356,6 +356,33 @@ public class IntHelper {
         return n * n * n;
     }
 
+    public static boolean willAddOverflow(int a, int b) {
+        if (a > 0 && b > 0) {
+            // Check positive overflow
+            return Integer.MAX_VALUE - a < b;
+        } else if (a < 0 && b < 0) {
+            // Check negative overflow
+            return Integer.MIN_VALUE - a > b;
+        }
+        // No overflow in mixed sign addition
+        return false;
+    }
+
+    public static boolean willMultiplyOverflow(int a, int b) {
+        if (a == 0 || b == 0) {
+            return false;
+        }
+
+        // Using long to prevent overflow in comparison
+
+        long result = (long) a * (long) b;
+        return result > Integer.MAX_VALUE || result < Integer.MIN_VALUE;
+    }
+
+
+
+
+
 // For average and isPythagoreanTriple, overloading with long isn't necessary
 // because they don't directly involve operations that could overflow.
 
