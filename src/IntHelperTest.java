@@ -251,6 +251,7 @@ class IntHelperTest {
         assertFalse(IntHelper.isPythagoreanTriple(-3, 4, 5)); // Negative check
         assertFalse(IntHelper.isPythagoreanTriple(0, 0, 0)); // Zero check
         assertTrue(IntHelper.isPythagoreanTriple(5, 12, 13)); // False positive check
+
     }
 
 
