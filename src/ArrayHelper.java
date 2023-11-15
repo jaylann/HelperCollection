@@ -676,7 +676,7 @@ public class ArrayHelper {
     }
 
     // Copy of the array
-    public static int[] copyArray(int[] array) {
+    public static int[] cloneArray(int[] array) {
         if (array == null) {
             throw new IllegalArgumentException("Array is null");
         }
@@ -687,7 +687,7 @@ public class ArrayHelper {
         }
         return copy;
     }
-    public static long[] copyArray(long[] array) {
+    public static long[] cloneArray(long[] array) {
         if (array == null) {
             throw new IllegalArgumentException("Array is null");
         }
@@ -698,7 +698,7 @@ public class ArrayHelper {
         }
         return copy;
     }
-    public static double[] copyArray(double[] array) {
+    public static double[] cloneArray(double[] array) {
         if (array == null) {
             throw new IllegalArgumentException("Array is null");
         }
@@ -709,7 +709,7 @@ public class ArrayHelper {
         }
         return copy;
     }
-    public static float[] copyArray(float[] array) {
+    public static float[] cloneArray(float[] array) {
         if (array == null) {
             throw new IllegalArgumentException("Array is null");
         }
@@ -720,7 +720,7 @@ public class ArrayHelper {
         }
         return copy;
     }
-    public static String[] copyArray(String[] array) {
+    public static String[] cloneArray(String[] array) {
         if (array == null) {
             throw new IllegalArgumentException("Array is null");
         }
@@ -731,7 +731,7 @@ public class ArrayHelper {
         }
         return copy;
     }
-    public static char[] copyArray(char[] array) {
+    public static char[] cloneArray(char[] array) {
         if (array == null) {
             throw new IllegalArgumentException("Array is null");
         }
@@ -742,7 +742,7 @@ public class ArrayHelper {
         }
         return copy;
     }
-    public static byte[] copyArray(byte[] array) {
+    public static byte[] cloneArray(byte[] array) {
         if (array == null) {
             throw new IllegalArgumentException("Array is null");
         }
@@ -1186,7 +1186,7 @@ public class ArrayHelper {
             throw new IllegalArgumentException("New size cannot be negative");
         }
         int[] newArray = new int[newSize];
-        for (int i = 0; i < Math.min(array.length, newSize); i++) {
+        for (int i = 0; i < Integer.min(array.length, newSize); i++) {
             newArray[i] = array[i];
         }
         return newArray;
@@ -1199,7 +1199,7 @@ public class ArrayHelper {
             throw new IllegalArgumentException("New size cannot be negative");
         }
         float[] newArray = new float[newSize];
-        for (int i = 0; i < Math.min(array.length, newSize); i++) {
+        for (int i = 0; i < Integer.min(array.length, newSize); i++) {
             newArray[i] = array[i];
         }
         return newArray;
@@ -1212,7 +1212,7 @@ public class ArrayHelper {
             throw new IllegalArgumentException("New size cannot be negative");
         }
         String[] newArray = new String[newSize];
-        for (int i = 0; i < Math.min(array.length, newSize); i++) {
+        for (int i = 0; i < Integer.min(array.length, newSize); i++) {
             newArray[i] = array[i];
         }
         return newArray;
@@ -1225,7 +1225,7 @@ public class ArrayHelper {
             throw new IllegalArgumentException("New size cannot be negative");
         }
         double[] newArray = new double[newSize];
-        for (int i = 0; i < Math.min(array.length, newSize); i++) {
+        for (int i = 0; i < Integer.min(array.length, newSize); i++) {
             newArray[i] = array[i];
         }
         return newArray;
@@ -1238,7 +1238,7 @@ public class ArrayHelper {
             throw new IllegalArgumentException("New size cannot be negative");
         }
         long[] newArray = new long[newSize];
-        for (int i = 0; i < Math.min(array.length, newSize); i++) {
+        for (int i = 0; i < Integer.min(array.length, newSize); i++) {
             newArray[i] = array[i];
         }
         return newArray;
@@ -1251,7 +1251,7 @@ public class ArrayHelper {
             throw new IllegalArgumentException("New size cannot be negative");
         }
         char[] newArray = new char[newSize];
-        for (int i = 0; i < Math.min(array.length, newSize); i++) {
+        for (int i = 0; i < Integer.min(array.length, newSize); i++) {
             newArray[i] = array[i];
         }
         return newArray;
@@ -1264,7 +1264,7 @@ public class ArrayHelper {
             throw new IllegalArgumentException("New size cannot be negative");
         }
         byte[] newArray = new byte[newSize];
-        for (int i = 0; i < Math.min(array.length, newSize); i++) {
+        for (int i = 0; i < Integer.min(array.length, newSize); i++) {
             newArray[i] = array[i];
         }
         return newArray;
@@ -1370,7 +1370,7 @@ public class ArrayHelper {
         int uniqueCount = 0;
 
         for (float value : array) {
-            if (!contains(temp, uniqueCount, value)) {
+            if (!containsPartial(temp, uniqueCount, value)) {
                 temp[uniqueCount++] = value;
             }
         }
@@ -1385,7 +1385,7 @@ public class ArrayHelper {
         int uniqueCount = 0;
 
         for (long value : array) {
-            if (!contains(temp, uniqueCount, value)) {
+            if (!containsPartial(temp, uniqueCount, value)) {
                 temp[uniqueCount++] = value;
             }
         }
@@ -1400,7 +1400,7 @@ public class ArrayHelper {
         int uniqueCount = 0;
 
         for (double value : array) {
-            if (!contains(temp, uniqueCount, value)) {
+            if (!containsPartial(temp, uniqueCount, value)) {
                 temp[uniqueCount++] = value;
             }
         }
@@ -1415,7 +1415,7 @@ public class ArrayHelper {
         int uniqueCount = 0;
 
         for (int value : array) {
-            if (!contains(temp, uniqueCount, value)) {
+            if (!containsPartial(temp, uniqueCount, value)) {
                 temp[uniqueCount++] = value;
             }
         }
@@ -1430,7 +1430,7 @@ public class ArrayHelper {
         int uniqueCount = 0;
 
         for (byte value : array) {
-            if (!contains(temp, uniqueCount, value)) {
+            if (!containsPartial(temp, uniqueCount, value)) {
                 temp[uniqueCount++] = value;
             }
         }
@@ -1445,7 +1445,7 @@ public class ArrayHelper {
         int uniqueCount = 0;
 
         for (char value : array) {
-            if (!contains(temp, uniqueCount, value)) {
+            if (!containsPartial(temp, uniqueCount, value)) {
                 temp[uniqueCount++] = value;
             }
         }
@@ -1460,7 +1460,7 @@ public class ArrayHelper {
         int uniqueCount = 0;
 
         for (String value : array) {
-            if (!contains(temp, uniqueCount, value)) {
+            if (!containsPartial(temp, uniqueCount, value)) {
                 temp[uniqueCount++] = value;
             }
         }
@@ -1471,7 +1471,7 @@ public class ArrayHelper {
     }
 
     // Check if array contains a value up to a certain index
-    private static boolean contains(float[] array, int length, float value) {
+    public static boolean containsPartial(float[] array, int length, float value) {
         for (int i = 0; i < length; i++) {
             if (array[i] == value) {
                 return true;
@@ -1479,7 +1479,7 @@ public class ArrayHelper {
         }
         return false;
     }
-    private static boolean contains(long[] array, int length, long value) {
+    public static boolean containsPartial(long[] array, int length, long value) {
         for (int i = 0; i < length; i++) {
             if (array[i] == value) {
                 return true;
@@ -1487,7 +1487,7 @@ public class ArrayHelper {
         }
         return false;
     }
-    private static boolean contains(double[] array, int length, double value) {
+    public static boolean containsPartial(double[] array, int length, double value) {
         for (int i = 0; i < length; i++) {
             if (array[i] == value) {
                 return true;
@@ -1495,7 +1495,7 @@ public class ArrayHelper {
         }
         return false;
     }
-    private static boolean contains(byte[] array, int length, byte value) {
+    public static boolean containsPartial(byte[] array, int length, byte value) {
         for (int i = 0; i < length; i++) {
             if (array[i] == value) {
                 return true;
@@ -1503,7 +1503,7 @@ public class ArrayHelper {
         }
         return false;
     }
-    private static boolean contains(int[] array, int length, int value) {
+    public static boolean containsPartial(int[] array, int length, int value) {
         for (int i = 0; i < length; i++) {
             if (array[i] == value) {
                 return true;
@@ -1511,7 +1511,7 @@ public class ArrayHelper {
         }
         return false;
     }
-    private static boolean contains(char[] array, int length, char value) {
+    public static boolean containsPartial(char[] array, int length, char value) {
         for (int i = 0; i < length; i++) {
             if (array[i] == value) {
                 return true;
@@ -1519,7 +1519,7 @@ public class ArrayHelper {
         }
         return false;
     }
-    private static boolean contains(String[] array, int length, String value) {
+    public static boolean containsPartial(String[] array, int length, String value) {
         for (int i = 0; i < length; i++) {
             if (array[i] == value) {
                 return true;
@@ -1535,7 +1535,7 @@ public class ArrayHelper {
         int count = 0;
 
         for (float value : array1) {
-            if (contains(array2, array2.length, value) && !contains(temp, count, value)) {
+            if (containsPartial(array2, array2.length, value) && !containsPartial(temp, count, value)) {
                 temp[count++] = value;
             }
         }
@@ -1550,7 +1550,7 @@ public class ArrayHelper {
         int count = 0;
 
         for (long value : array1) {
-            if (contains(array2, array2.length, value) && !contains(temp, count, value)) {
+            if (containsPartial(array2, array2.length, value) && !containsPartial(temp, count, value)) {
                 temp[count++] = value;
             }
         }
@@ -1565,7 +1565,7 @@ public class ArrayHelper {
         int count = 0;
 
         for (double value : array1) {
-            if (contains(array2, array2.length, value) && !contains(temp, count, value)) {
+            if (containsPartial(array2, array2.length, value) && !containsPartial(temp, count, value)) {
                 temp[count++] = value;
             }
         }
@@ -1580,7 +1580,7 @@ public class ArrayHelper {
         int count = 0;
 
         for (int value : array1) {
-            if (contains(array2, array2.length, value) && !contains(temp, count, value)) {
+            if (containsPartial(array2, array2.length, value) && !containsPartial(temp, count, value)) {
                 temp[count++] = value;
             }
         }
@@ -1595,7 +1595,7 @@ public class ArrayHelper {
         int count = 0;
 
         for (byte value : array1) {
-            if (contains(array2, array2.length, value) && !contains(temp, count, value)) {
+            if (containsPartial(array2, array2.length, value) && !containsPartial(temp, count, value)) {
                 temp[count++] = value;
             }
         }
@@ -1610,7 +1610,7 @@ public class ArrayHelper {
         int count = 0;
 
         for (char value : array1) {
-            if (contains(array2, array2.length, value) && !contains(temp, count, value)) {
+            if (containsPartial(array2, array2.length, value) && !containsPartial(temp, count, value)) {
                 temp[count++] = value;
             }
         }
@@ -1625,7 +1625,7 @@ public class ArrayHelper {
         int count = 0;
 
         for (String value : array1) {
-            if (contains(array2, array2.length, value) && !contains(temp, count, value)) {
+            if (containsPartial(array2, array2.length, value) && !containsPartial(temp, count, value)) {
                 temp[count++] = value;
             }
         }
@@ -1643,7 +1643,7 @@ public class ArrayHelper {
         int count = 0;
 
         for (float value : array1) {
-            if (!contains(array2, array2.length, value)) {
+            if (!containsPartial(array2, array2.length, value)) {
                 temp[count++] = value;
             }
         }
@@ -1659,7 +1659,7 @@ public class ArrayHelper {
         int count = 0;
 
         for (long value : array1) {
-            if (!contains(array2, array2.length, value)) {
+            if (!containsPartial(array2, array2.length, value)) {
                 temp[count++] = value;
             }
         }
@@ -1675,7 +1675,7 @@ public class ArrayHelper {
         int count = 0;
 
         for (double value : array1) {
-            if (!contains(array2, array2.length, value)) {
+            if (!containsPartial(array2, array2.length, value)) {
                 temp[count++] = value;
             }
         }
@@ -1691,7 +1691,7 @@ public class ArrayHelper {
         int count = 0;
 
         for (int value : array1) {
-            if (!contains(array2, array2.length, value)) {
+            if (!containsPartial(array2, array2.length, value)) {
                 temp[count++] = value;
             }
         }
@@ -1707,7 +1707,7 @@ public class ArrayHelper {
         int count = 0;
 
         for (byte value : array1) {
-            if (!contains(array2, array2.length, value)) {
+            if (!containsPartial(array2, array2.length, value)) {
                 temp[count++] = value;
             }
         }
@@ -1723,7 +1723,7 @@ public class ArrayHelper {
         int count = 0;
 
         for (char value : array1) {
-            if (!contains(array2, array2.length, value)) {
+            if (!containsPartial(array2, array2.length, value)) {
                 temp[count++] = value;
             }
         }
@@ -1739,7 +1739,7 @@ public class ArrayHelper {
         int count = 0;
 
         for (String value : array1) {
-            if (!contains(array2, array2.length, value)) {
+            if (!containsPartial(array2, array2.length, value)) {
                 temp[count++] = value;
             }
         }
@@ -1754,61 +1754,61 @@ public class ArrayHelper {
         if (array == null || positions < 0 || positions >= array.length) return;
         int n = array.length;
         positions = positions % n;
-        reverse(array, 0, n - 1);
-        reverse(array, 0, positions - 1);
-        reverse(array, positions, n - 1);
+        reversePartial(array, 0, n - 1);
+        reversePartial(array, 0, positions - 1);
+        reversePartial(array, positions, n - 1);
     }
     public static void rotateArray(long[] array, int positions) {
         if (array == null || positions < 0 || positions >= array.length) return;
         int n = array.length;
         positions = positions % n;
-        reverse(array, 0, n - 1);
-        reverse(array, 0, positions - 1);
-        reverse(array, positions, n - 1);
+        reversePartial(array, 0, n - 1);
+        reversePartial(array, 0, positions - 1);
+        reversePartial(array, positions, n - 1);
     }
     public static void rotateArray(double[] array, int positions) {
         if (array == null || positions < 0 || positions >= array.length) return;
         int n = array.length;
         positions = positions % n;
-        reverse(array, 0, n - 1);
-        reverse(array, 0, positions - 1);
-        reverse(array, positions, n - 1);
+        reversePartial(array, 0, n - 1);
+        reversePartial(array, 0, positions - 1);
+        reversePartial(array, positions, n - 1);
     }
     public static void rotateArray(int[] array, int positions) {
         if (array == null || positions < 0 || positions >= array.length) return;
         int n = array.length;
         positions = positions % n;
-        reverse(array, 0, n - 1);
-        reverse(array, 0, positions - 1);
-        reverse(array, positions, n - 1);
+        reversePartial(array, 0, n - 1);
+        reversePartial(array, 0, positions - 1);
+        reversePartial(array, positions, n - 1);
     }
     public static void rotateArray(byte[] array, int positions) {
         if (array == null || positions < 0 || positions >= array.length) return;
         int n = array.length;
         positions = positions % n;
-        reverse(array, 0, n - 1);
-        reverse(array, 0, positions - 1);
-        reverse(array, positions, n - 1);
+        reversePartial(array, 0, n - 1);
+        reversePartial(array, 0, positions - 1);
+        reversePartial(array, positions, n - 1);
     }
     public static void rotateArray(char[] array, int positions) {
         if (array == null || positions < 0 || positions >= array.length) return;
         int n = array.length;
         positions = positions % n;
-        reverse(array, 0, n - 1);
-        reverse(array, 0, positions - 1);
-        reverse(array, positions, n - 1);
+        reversePartial(array, 0, n - 1);
+        reversePartial(array, 0, positions - 1);
+        reversePartial(array, positions, n - 1);
     }
     public static void rotateArray(String[] array, int positions) {
         if (array == null || positions < 0 || positions >= array.length) return;
         int n = array.length;
         positions = positions % n;
-        reverse(array, 0, n - 1);
-        reverse(array, 0, positions - 1);
-        reverse(array, positions, n - 1);
+        reversePartial(array, 0, n - 1);
+        reversePartial(array, 0, positions - 1);
+        reversePartial(array, positions, n - 1);
     }
 
     // Helper method to reverse a portion of a float array
-    private static void reverse(float[] array, int start, int end) {
+    public static void reversePartial(float[] array, int start, int end) {
         while (start < end) {
             float temp = array[start];
             array[start] = array[end];
@@ -1817,7 +1817,7 @@ public class ArrayHelper {
             end--;
         }
     }
-    private static void reverse(long[] array, int start, int end) {
+    public static void reversePartial(long[] array, int start, int end) {
         while (start < end) {
             long temp = array[start];
             array[start] = array[end];
@@ -1826,7 +1826,7 @@ public class ArrayHelper {
             end--;
         }
     }
-    private static void reverse(double[] array, int start, int end) {
+    public static void reversePartial(double[] array, int start, int end) {
         while (start < end) {
             double temp = array[start];
             array[start] = array[end];
@@ -1835,7 +1835,7 @@ public class ArrayHelper {
             end--;
         }
     }
-    private static void reverse(int[] array, int start, int end) {
+    public static void reversePartial(int[] array, int start, int end) {
         while (start < end) {
             int temp = array[start];
             array[start] = array[end];
@@ -1844,7 +1844,7 @@ public class ArrayHelper {
             end--;
         }
     }
-    private static void reverse(byte[] array, int start, int end) {
+    public static void reversePartial(byte[] array, int start, int end) {
         while (start < end) {
             byte temp = array[start];
             array[start] = array[end];
@@ -1853,7 +1853,7 @@ public class ArrayHelper {
             end--;
         }
     }
-    private static void reverse(char[] array, int start, int end) {
+    public static void reversePartial(char[] array, int start, int end) {
         while (start < end) {
             char temp = array[start];
             array[start] = array[end];
@@ -1862,7 +1862,7 @@ public class ArrayHelper {
             end--;
         }
     }
-    private static void reverse(String[] array, int start, int end) {
+    public static void reversePartial(String[] array, int start, int end) {
         while (start < end) {
             String temp = array[start];
             array[start] = array[end];
@@ -1873,37 +1873,37 @@ public class ArrayHelper {
     }
 
     // Custom method to copy array elements
-    private static void copyArray(float[] source, float[] destination, int length) {
+    public static void copyArray(float[] source, float[] destination, int length) {
         for (int i = 0; i < length; i++) {
             destination[i] = source[i];
         }
     }
-    private static void copyArray(long[] source, long[] destination, int length) {
+    public static void copyArray(long[] source, long[] destination, int length) {
         for (int i = 0; i < length; i++) {
             destination[i] = source[i];
         }
     }
-    private static void copyArray(double[] source, double[] destination, int length) {
+    public static void copyArray(double[] source, double[] destination, int length) {
         for (int i = 0; i < length; i++) {
             destination[i] = source[i];
         }
     }
-    private static void copyArray(int[] source, int[] destination, int length) {
+    public static void copyArray(int[] source, int[] destination, int length) {
         for (int i = 0; i < length; i++) {
             destination[i] = source[i];
         }
     }
-    private static void copyArray(byte[] source, byte[] destination, int length) {
+    public static void copyArray(byte[] source, byte[] destination, int length) {
         for (int i = 0; i < length; i++) {
             destination[i] = source[i];
         }
     }
-    private static void copyArray(char[] source, char[] destination, int length) {
+    public static void copyArray(char[] source, char[] destination, int length) {
         for (int i = 0; i < length; i++) {
             destination[i] = source[i];
         }
     }
-    private static void copyArray(String[] source, String[] destination, int length) {
+    public static void copyArray(String[] source, String[] destination, int length) {
         for (int i = 0; i < length; i++) {
             destination[i] = source[i];
         }
