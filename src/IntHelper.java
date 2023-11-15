@@ -31,6 +31,59 @@ public class IntHelper {
         }
         return true;
     }
+
+    /**
+     * Calculates the logarithm base 2 of an integer.
+     * @param num The number to calculate the log base 2 of.
+     * @return The floor value of the logarithm base 2 of the number.
+     */
+    public static int log2(int num) {
+        if (num <= 0) {
+            throw new IllegalArgumentException("Number must be positive");
+        }
+        int log = 0;
+        while (num > 1) {
+            num >>= 1; // equivalent to num = num / 2;
+            log++;
+        }
+        return log;
+    }
+
+    /**
+     * Calculates the logarithm base 10 of an integer.
+     * @param num The number to calculate the log base 10 of.
+     * @return The floor value of the logarithm base 10 of the number.
+     */
+    public static int log10(int num) {
+        if (num <= 0) {
+            throw new IllegalArgumentException("Number must be positive");
+        }
+        int log = 0;
+        while (num >= 10) {
+            num /= 10;
+            log++;
+        }
+        return log;
+    }
+
+    /**
+     * Calculates the logarithm of an integer for a given base.
+     * @param num The number to calculate the logarithm of.
+     * @param base The base of the logarithm.
+     * @return The floor value of the logarithm of the number for the given base.
+     */
+    public static int log(int num, int base) {
+        if (num <= 0 || base <= 1) {
+            throw new IllegalArgumentException("Number must be positive and base must be greater than 1");
+        }
+        int log = 0;
+        while (num >= base) {
+            num /= base;
+            log++;
+        }
+        return log;
+    }
+
     /**
      * Calculates the power of a number.
      *
