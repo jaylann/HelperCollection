@@ -59,6 +59,14 @@ class Person implements Comparable<Person> {
     public String toString() {
         return name + " (" + age + ")";
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if(other instanceof Person == false) return false;
+        
+        if(((Person)other).age == age && ((Person)other).name.equals(name)) return true; 
+        return false;
+    }
 }
 
 
