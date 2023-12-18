@@ -24,7 +24,7 @@ To see our sorting algorithms in action, check out the example usage cases locat
 To get started with HelperCollection, clone this repository to your local machine:
 
 ```
-git clone https://github.com/yourusername/HelperCollection.git
+git clone https://github.com/jaylann/HelperCollection.git
 ```
 
 
