@@ -38,7 +38,6 @@ public class SortingExample {
         List<String> wordList = Arrays.asList(wordArray);
         Sortable.sort(wordList, BubbleSort.getBubbleSortAlgorithm());
         System.out.println("Sorted Array of Strings: " + Arrays.toString(wordArray));
-
         // Example 5: Sorting a list of custom objects (Persons)
         List<Person> people = Arrays.asList(new Person("Alice", 30), new Person("Bob", 25), new Person("Charlie", 35));
         Sortable.sort(people, BubbleSort.getBubbleSortAlgorithm());
