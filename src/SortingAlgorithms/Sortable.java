@@ -1,6 +1,7 @@
 package SortingAlgorithms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -59,5 +60,17 @@ public class Sortable {
         if (iterable == null) {
             throw new IllegalArgumentException("Iterable cannot be null.");
         }
+    }
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5);
+
+        // Sorting a list using BubbleSort
+        Sortable.sort(numbers, BubbleSort.getBubbleSortAlgorithm());
+        System.out.println("Sorted List: " + numbers);
+
+        // Sorting an iterable (e.g., an array) using BubbleSort
+        Integer[] numberArray = {3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5};
+        Sortable.sort(Arrays.asList(numberArray), BubbleSort.getBubbleSortAlgorithm());
+        System.out.println("Sorted Iterable: " + Arrays.toString(numberArray));
     }
 }
