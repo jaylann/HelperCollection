@@ -1,7 +1,8 @@
-package SortingAlgorithms;
+package SortingAlgorithms.Tests;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import SortingAlgorithms.BubbleSort;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
