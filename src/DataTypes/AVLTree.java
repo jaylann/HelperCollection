@@ -20,7 +20,7 @@ public class AVLTree<T extends Comparable<T>> implements Iterable<T> {
         return iterator(TraversalType.IN_ORDER);
     }
 
-    private enum TraversalType {
+    public enum TraversalType {
         IN_ORDER, PRE_ORDER, POST_ORDER
     }
 
@@ -49,11 +49,34 @@ public class AVLTree<T extends Comparable<T>> implements Iterable<T> {
         return getNode(root, key) != null;
     }
 
-    private class Node {
+
+    public class Node {
         T key;
         T value;
         int height;
-        Node left, right;
+        Node left;
+
+        public T getKey() {
+            return key;
+        }
+
+        public T getValue() {
+            return value;
+        }
+
+        public int getHeight() {
+            return height;
+        }
+
+        public Node getLeft() {
+            return left;
+        }
+
+        public Node getRight() {
+            return right;
+        }
+
+        Node right;
 
         public Node(T key, T value) {
             this.key = key;
@@ -106,8 +129,10 @@ public class AVLTree<T extends Comparable<T>> implements Iterable<T> {
             } else {
                 Node mostLeftChild = mostLeftChild(node.right);
                 node.key = mostLeftChild.key;
+                node.value = mostLeftChild.value; // Update the value as well
                 node.right = delete(node.right, mostLeftChild.key);
             }
+
         }
 
         if (node != null) {
@@ -176,6 +201,10 @@ public class AVLTree<T extends Comparable<T>> implements Iterable<T> {
 
     public Iterator<T> iterator(TraversalType traversalType) {
         return new AVLTreeIterator(root, traversalType);
+    }
+
+    public Node getRoot() {
+        return root;
     }
 
     private class AVLTreeIterator implements Iterator<T> {
