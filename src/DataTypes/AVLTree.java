@@ -13,7 +13,12 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Stack;
 
-public class AVLTree<T extends Comparable<T>> {
+public class AVLTree<T extends Comparable<T>> implements Iterable<T> {
+
+    @Override
+    public Iterator<T> iterator() {
+        return iterator(TraversalType.IN_ORDER);
+    }
 
     private enum TraversalType {
         IN_ORDER, PRE_ORDER, POST_ORDER
@@ -149,16 +154,28 @@ public class AVLTree<T extends Comparable<T>> {
     private class AVLTreeIterator implements Iterator<T> {
         private Stack<Node> stack = new Stack<>();
         private TraversalType traversalType;
+        private Node lastNodeVisited; // Needed for post-order traversal
 
         public AVLTreeIterator(Node root, TraversalType traversalType) {
             this.traversalType = traversalType;
-            pushLeft(root);
+            if (traversalType == TraversalType.PRE_ORDER) {
+                pushPreOrder(root);
+            } else {
+                pushLeft(root);
+            }
+            lastNodeVisited = null;
         }
 
         private void pushLeft(Node node) {
             while (node != null) {
                 stack.push(node);
                 node = node.left;
+            }
+        }
+
+        private void pushPreOrder(Node node) {
+            if (node != null) {
+                stack.push(node);
             }
         }
 
@@ -171,21 +188,46 @@ public class AVLTree<T extends Comparable<T>> {
         public T next() {
             if (!hasNext()) throw new NoSuchElementException();
 
-            Node current = stack.pop();
-            T key = current.key;
+            Node current;
+            switch (traversalType) {
+                case IN_ORDER:
+                    current = stack.pop();
+                    T key = current.key;
+                    if (current.right != null) {
+                        pushLeft(current.right);
+                    }
+                    return key;
 
-            if (traversalType == TraversalType.IN_ORDER) {
-                if (current.right != null) {
-                    pushLeft(current.right);
-                }
-            } else if (traversalType == TraversalType.PRE_ORDER) {
-                // Implementation for pre-order
-            } else if (traversalType == TraversalType.POST_ORDER) {
-                // Implementation for post-order
+                case PRE_ORDER:
+                    current = stack.pop();
+                    T keyValue = current.key;
+                    if (current.right != null) {
+                        pushPreOrder(current.right);
+                    }
+                    if (current.left != null) {
+                        pushPreOrder(current.left);
+                    }
+                    return keyValue;
+
+                case POST_ORDER:
+                    while (true) {
+                        current = stack.peek();
+                        if (current.right != null && lastNodeVisited != current.right) {
+                            pushLeft(current.right);
+                        } else if (current.left == null || lastNodeVisited == current) {
+                            stack.pop();
+                            lastNodeVisited = current;
+                            return current.key;
+                        } else {
+                            lastNodeVisited = null;
+                        }
+                    }
+
+                default:
+                    throw new UnsupportedOperationException("Unsupported traversal type");
             }
-
-            return key;
         }
     }
+
 }
 
