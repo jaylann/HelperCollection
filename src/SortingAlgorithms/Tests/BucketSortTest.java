@@ -1,4 +1,4 @@
-package SortingAlgorithms;
+package SortingAlgorithms.Tests;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.function.Consumer;
 
 import org.junit.jupiter.api.Test;
+
+import SortingAlgorithms.BucketSort;
+
 
 public class BucketSortTest {
     @Test
