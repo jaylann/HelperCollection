@@ -9,9 +9,11 @@
  */
 
 
+import java.util.Arrays;
+
 public class IntHelper {
     public static boolean isLog2(int num) {
-        if (num<1) {
+        if (num < 1) {
             return false;
         }
         while (num > 1) {
@@ -51,6 +53,7 @@ public class IntHelper {
 
     /**
      * Calculates the logarithm base 2 of an integer.
+     *
      * @param num The number to calculate the log base 2 of.
      * @return The floor value of the logarithm base 2 of the number.
      */
@@ -68,6 +71,7 @@ public class IntHelper {
 
     /**
      * Calculates the logarithm base 10 of an integer.
+     *
      * @param num The number to calculate the log base 10 of.
      * @return The floor value of the logarithm base 10 of the number.
      */
@@ -85,7 +89,8 @@ public class IntHelper {
 
     /**
      * Calculates the logarithm of an integer for a given base.
-     * @param num The number to calculate the logarithm of.
+     *
+     * @param num  The number to calculate the logarithm of.
      * @param base The base of the logarithm.
      * @return The floor value of the logarithm of the number for the given base.
      */
@@ -104,7 +109,7 @@ public class IntHelper {
     /**
      * Calculates the power of a number.
      *
-     * @param base The base number.
+     * @param base     The base number.
      * @param exponent The exponent.
      * @return The result of base raised to the power of exponent.
      */
@@ -177,7 +182,7 @@ public class IntHelper {
      * @return The greatest common divisor of a and b.
      */
     public static int gcd(int a, int b) {
-        if (a==b && a==0) {
+        if (a == b && a == 0) {
             throw new ArithmeticException("No denominator for 0");
         }
         a = abs(a);
@@ -189,7 +194,6 @@ public class IntHelper {
         }
         return a;
     }
-
 
 
     /**
@@ -217,11 +221,12 @@ public class IntHelper {
         }
         return true;
     }
+
     public static double sqrt(int number) {
-        if (number <= 1 && number > -1){
+        if (number <= 1 && number > -1) {
             return number;
         }
-        if (number<0) {
+        if (number < 0) {
             throw new IllegalArgumentException("Cannot calculate sqrt of a negative number");
         }
         double t;
@@ -241,7 +246,7 @@ public class IntHelper {
     }
 
     public static int fibonacci(int n) {
-        if (n<0) {
+        if (n < 0) {
             throw new IllegalArgumentException("Negative index");
         }
         if (n <= 1) {
@@ -251,7 +256,7 @@ public class IntHelper {
     }
 
     public static boolean isPerfectNumber(int number) {
-        if (number <=0) {
+        if (number <= 0) {
             return false;
         }
         int sum = 0;
@@ -274,18 +279,9 @@ public class IntHelper {
     }
 
 
-
     public static void main(String[] args) {
-        char[] test = new char[]{'a', 'b', 'c'};
-        System.out.println(ArrayHelper.arrayContains(test, 'b'));
-        ArrayHelper.rotateArray(test, 2);
-        System.out.println(test);
+
     }
-
-
-
-
-
 
 
     public static int square(int n) {
@@ -382,9 +378,11 @@ public class IntHelper {
     // I know its not an int function but im to lazy to make a new class just for this so deal with it
     public static boolean willLongMultiplyOverflow(long a, long b) {
         // Zero case - no overflow
+
         if (a == 0 || b == 0) {
             return false;
         }
+
 
         // One and negative one cases - overflow only if other is beyond long range
         if (a == 1 || a == -1) {
