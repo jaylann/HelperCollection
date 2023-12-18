@@ -1,15 +1,13 @@
 /*
  * - Lanfermann, Justin (jaylann). "HelperCollection." GitHub repository.
  *   https://github.com/jaylann/HelperCollection.
- *   Last commit: Wed 15. Nov 2023 17:15
+ *   Last commit: Mon, 18th December 2023, 18:15
  *
  * This file is part of the "HelperCollection" project, developed and maintained by
- * Justin Lanfermann (jaylann). For more information, updates, and terms of use,
+ * Justin Lanfermann (jaylann). For more information, updates, collaborators and terms of use,
  * please visit the GitHub repository.
  */
 
-
-import java.util.Arrays;
 
 public class IntHelper {
     public static boolean isLog2(int num) {

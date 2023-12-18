@@ -1,3 +1,12 @@
+/*
+ * - Lanfermann, Justin (jaylann). "HelperCollection." GitHub repository.
+ *   https://github.com/jaylann/HelperCollection.
+ *   Last commit: Mon, 18th December 2023, 18:15
+ *
+ * This file is part of the "HelperCollection" project, developed and maintained by
+ * Justin Lanfermann (jaylann). For more information, updates, collaborators and terms of use,
+ * please visit the GitHub repository.
+ */
 package DataTypes;
 
 import java.util.Iterator;
