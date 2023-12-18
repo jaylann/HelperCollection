@@ -24,33 +24,60 @@ public class AVLTree<T extends Comparable<T>> implements Iterable<T> {
         IN_ORDER, PRE_ORDER, POST_ORDER
     }
 
+    public T get(T key) {
+        Node node = getNode(root, key);
+        return node == null ? null : node.value;
+    }
+
+    // Helper method to find a node with a given key
+    private Node getNode(Node node, T key) {
+        while (node != null) {
+            int cmp = key.compareTo(node.key);
+            if (cmp < 0) {
+                node = node.left;
+            } else if (cmp > 0) {
+                node = node.right;
+            } else {
+                return node; // Key found
+            }
+        }
+        return null; // Key not found
+    }
+
+    // Method to check if a key exists in the tree
+    public boolean search(T key) {
+        return getNode(root, key) != null;
+    }
+
     private class Node {
         T key;
+        T value;
         int height;
         Node left, right;
 
-        public Node(T key) {
+        public Node(T key, T value) {
             this.key = key;
+            this.value = value;
             this.height = 1;
         }
     }
 
     private Node root;
 
-    public void insert(T key) {
-        root = insert(root, key);
+    public void insert(T key, T value) {
+        root = insert(root, key, value);
     }
 
-    private Node insert(Node node, T key) {
+    private Node insert(Node node, T key, T value) {
         if (node == null) {
-            return new Node(key);
+            return new Node(key, value);
         }
 
         int cmp = key.compareTo(node.key);
         if (cmp < 0) {
-            node.left = insert(node.left, key);
+            node.left = insert(node.left, key, value);
         } else if (cmp > 0) {
-            node.right = insert(node.right, key);
+            node.right = insert(node.right, key, value);
         } else {
             return node; // Duplicate keys not allowed
         }
