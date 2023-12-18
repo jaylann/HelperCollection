@@ -26,10 +26,14 @@ public class AdjacencyGraph<T> implements Iterable<T> {
     // Adds an edge between two vertices
     public void addEdge(T source, T destination) {
         if (!adjacencyList.containsKey(source)) {
-            addVertex(source);
+            throw new IllegalArgumentException("Source doesn't exist in graph");
         }
         if (!adjacencyList.containsKey(destination)) {
-            addVertex(destination);
+            throw new IllegalArgumentException("Destination doesn't exist in graph");
+
+        }
+        if (adjacencyList.get(source).contains(destination)) {
+            return;
         }
         adjacencyList.get(source).add(destination);
     }
@@ -42,6 +46,9 @@ public class AdjacencyGraph<T> implements Iterable<T> {
 
     // Removes an edge between two vertices
     public void removeEdge(T source, T destination) {
+        if (destination == null || source == null) {
+            throw new IllegalArgumentException("Source and Destination must both be not null");
+        }
         if (adjacencyList.containsKey(source) && adjacencyList.containsKey(destination)) {
             adjacencyList.get(source).remove(destination);
         }
@@ -49,8 +56,20 @@ public class AdjacencyGraph<T> implements Iterable<T> {
 
     // Returns a list of adjacent vertices for a given vertex
     public List<T> getAdjVertices(T vertex) {
-        return adjacencyList.get(vertex);
+        List<T> adjVertices = adjacencyList.get(vertex);
+        if (adjVertices == null) {
+            return new ArrayList<>();
+        }
+        return adjVertices;
     }
+    // Method to get the set of all vertices
+    public Set<T> vertexSet() {
+        return new HashSet<>(adjacencyList.keySet());
+    }
+    public Set<List<T>> edgeSet() {
+        return new HashSet<>(adjacencyList.values());
+    }
+
 
     // Iterator implementation
     @Override
@@ -68,4 +87,46 @@ public class AdjacencyGraph<T> implements Iterable<T> {
             System.out.println();
         }
     }
+    // ... [previous class code] ...
+
+    // Checks if a vertex exists in the graph
+    public boolean containsVertex(T vertex) {
+        return adjacencyList.containsKey(vertex);
+    }
+
+    // Checks if an edge exists between two vertices
+    public boolean containsEdge(T source, T destination) {
+        if (!adjacencyList.containsKey(source) || !adjacencyList.containsKey(destination)) {
+            return false;
+        }
+        return adjacencyList.get(source).contains(destination);
+    }
+
+    // Usage Example
+    public static void main(String[] args) {
+        AdjacencyGraph<String> graph = new AdjacencyGraph<>();
+        graph.addVertex("A");
+        graph.addVertex("B");
+        graph.addVertex("C");
+        graph.addEdge("B", "C");
+        graph.addEdge("B", "A");
+        graph.addEdge("A", "B");
+        // Should return A, C
+        System.out.println(graph.getAdjVertices("B"));
+        // Should return B
+        System.out.println(graph.getAdjVertices("A"));
+        // True
+        System.out.println(graph.containsVertex("A"));
+        System.out.println(graph.containsEdge("A", "B"));
+        // False
+        System.out.println(graph.containsEdge("A", "C"));
+        graph.removeVertex("B");
+        System.out.println(graph.containsVertex("B"));
+        for (String current : graph) {
+            System.out.println(current);
+        }
+
+
+    }
+
 }
