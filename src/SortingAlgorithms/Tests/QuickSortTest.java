@@ -2,26 +2,26 @@ package SortingAlgorithms.Tests;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import SortingAlgorithms.BubbleSort;
-import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
+import org.junit.jupiter.api.Test;
 
-public class BubbleSortTest {
+import SortingAlgorithms.QuickSort;
+
+public class QuickSortTest {
     @Test
-    public void testBubbleSort() {
+    public void testQuickSort() {
         // Create a list of integers
         List<Integer> list = Arrays.asList(5, 3, 8, 2, 9, 1);
 
-        // Get the BubbleSort algorithm
-        Consumer<List<Integer>> bubbleSort = BubbleSort.getBubbleSortAlgorithm();
+        // Get the QuickSort algorithm
+        Consumer<List<Integer>> quickSort = QuickSort.getQuickSortAlgorithm();
 
         // Sort the list
-        bubbleSort.accept(list);
+        quickSort.accept(list);
 
         // Check if the list is sorted in ascending order
         for (int i = 0; i < list.size() - 1; i++) {
@@ -30,29 +30,29 @@ public class BubbleSortTest {
     }
 
     @Test
-    public void testBubbleSortEmpty() {
+    public void testQuickSortEmpty() {
         // Create a list of integers
         List<Integer> list = Arrays.asList();
 
-        // Get the BubbleSort algorithm
-        Consumer<List<Integer>> bubbleSort = BubbleSort.getBubbleSortAlgorithm();
+        // Get the QuickSort algorithm
+        Consumer<List<Integer>> quickSort = QuickSort.getQuickSortAlgorithm();
 
         // Sort the list
-        bubbleSort.accept(list);
+        quickSort.accept(list);
 
         assertTrue(list.isEmpty());
     }
 
     @Test
-    public void testBubbleSortSorted() {
+    public void testQuickSortSorted() {
         // Create a list of integers
         List<Integer> list = Arrays.asList(1, 2, 3, 5, 8, 9);
 
-        // Get the BubbleSort algorithm
-        Consumer<List<Integer>> bubbleSort = BubbleSort.getBubbleSortAlgorithm();
+        // Get the QuickSort algorithm
+        Consumer<List<Integer>> quickSort = QuickSort.getQuickSortAlgorithm();
 
         // Sort the list
-        bubbleSort.accept(list);
+        quickSort.accept(list);
 
         // Check if the list is sorted in ascending order
         for (int i = 0; i < list.size() - 1; i++) {
@@ -61,15 +61,15 @@ public class BubbleSortTest {
     }
 
     @Test
-    void testBubbleSortDuplicates() {
+    void testQuickSortDuplicates() {
                 // Create a list of integers
         List<Integer> list = Arrays.asList(1, 2, 3, 5, 8, 1, 5, 9);;
 
-        // Get the BubbleSort algorithm
-        Consumer<List<Integer>> bubbleSort = BubbleSort.getBubbleSortAlgorithm();
+        // Get the QuickSort algorithm
+        Consumer<List<Integer>> quickSort = QuickSort.getQuickSortAlgorithm();
 
         // Sort the list
-        bubbleSort.accept(list);
+        quickSort.accept(list);
 
         // Check if the list is sorted in ascending order
         for (int i = 0; i < list.size() - 1; i++) {
@@ -78,7 +78,7 @@ public class BubbleSortTest {
     }
 
     @Test
-    void testBubbleSortCollection() {
+    void testQuickSortCollection() {
         // Create a list of integers
         List<Person> list = new ArrayList<>();
         list.add(new Person("Abert", 10));
@@ -92,11 +92,11 @@ public class BubbleSortTest {
         expected.add(new Person("Ana", 18));
         expected.add(new Person("Ferenc", 21));
 
-        // Get the BubbleSort algorithm
-        Consumer<List<Person>> bubbleSort = BubbleSort.getBubbleSortAlgorithm();
+        // Get the QuickSort algorithm
+        Consumer<List<Person>> quickSort = QuickSort.getQuickSortAlgorithm();
 
         // Sort the list
-        bubbleSort.accept(list);
+        quickSort.accept(list);
 
         System.out.println(list);
 
