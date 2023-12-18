@@ -145,6 +145,4 @@ public class AdjacencyGraphTest {
         assertFalse(graph.iterator().hasNext());
     }
 
-
-    // Add more tests for exceptional cases, large graphs, complex scenarios, etc.
 }
