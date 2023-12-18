@@ -20,10 +20,10 @@ public class InsertionSortTest {
             List<Integer> list = Arrays.asList(5, 3, 8, 2, 9, 1);
     
             // Get the InsertionSort algorithm
-            Consumer<List<Integer>> InsertionSort = InsertionSort.getInsertionSortAlgorithm();
+            Consumer<List<Integer>> insertionSort = InsertionSort.getInsertionSortAlgorithm();
     
             // Sort the list
-            InsertionSort.accept(list);
+            insertionSort.accept(list);
     
             // Check if the list is sorted in ascending order
             for (int i = 0; i < list.size() - 1; i++) {
@@ -37,10 +37,10 @@ public class InsertionSortTest {
             List<Integer> list = Arrays.asList();
     
             // Get the InsertionSort algorithm
-            Consumer<List<Integer>> InsertionSort = InsertionSort.getInsertionSortAlgorithm();
+            Consumer<List<Integer>> insertionSort = InsertionSort.getInsertionSortAlgorithm();
     
             // Sort the list
-            InsertionSort.accept(list);
+            insertionSort.accept(list);
     
             assertTrue(list.isEmpty());
         }
@@ -51,10 +51,10 @@ public class InsertionSortTest {
             List<Integer> list = Arrays.asList(1, 2, 3, 5, 8, 9);
     
             // Get the InsertionSort algorithm
-            Consumer<List<Integer>> InsertionSort = InsertionSort.getInsertionSortAlgorithm();
+            Consumer<List<Integer>> insertionSort = InsertionSort.getInsertionSortAlgorithm();
     
             // Sort the list
-            InsertionSort.accept(list);
+            insertionSort.accept(list);
     
             // Check if the list is sorted in ascending order
             for (int i = 0; i < list.size() - 1; i++) {
@@ -68,10 +68,10 @@ public class InsertionSortTest {
             List<Integer> list = Arrays.asList(1, 2, 3, 5, 8, 1, 5, 9);;
     
             // Get the InsertionSort algorithm
-            Consumer<List<Integer>> InsertionSort = InsertionSort.getInsertionSortAlgorithm();
+            Consumer<List<Integer>> insertionSort = InsertionSort.getInsertionSortAlgorithm();
     
             // Sort the list
-            InsertionSort.accept(list);
+            insertionSort.accept(list);
     
             // Check if the list is sorted in ascending order
             for (int i = 0; i < list.size() - 1; i++) {
@@ -95,10 +95,10 @@ public class InsertionSortTest {
             expected.add(new Person("Ferenc", 21));
     
             // Get the InsertionSort algorithm
-            Consumer<List<Person>> InsertionSort = InsertionSort.getInsertionSortAlgorithm();
+            Consumer<List<Person>> insertionSort = InsertionSort.getInsertionSortAlgorithm();
     
             // Sort the list
-            InsertionSort.accept(list);
+            insertionSort.accept(list);
     
             System.out.println(list);
     
@@ -107,4 +107,4 @@ public class InsertionSortTest {
             }
         }
     }
-}
+
