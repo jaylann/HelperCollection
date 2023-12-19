@@ -14,11 +14,61 @@ import java.util.NoSuchElementException;
 
 public class DeQueue<T> implements Iterable<T> {
     private Node<T> first;
+
+    public Node<T> getFirst() {
+        return first;
+    }
+
+    public void setFirst(Node<T> first) {
+        this.first = first;
+    }
+
+    public Node<T> getLast() {
+        return last;
+    }
+
+    public void setLast(Node<T> last) {
+        this.last = last;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
     private Node<T> last;
     private int size;
 
     private static class Node<T> {
         T item;
+
+        public T getItem() {
+            return item;
+        }
+
+        public void setItem(T item) {
+            this.item = item;
+        }
+
+        public Node<T> getNext() {
+            return next;
+        }
+
+        public void setNext(Node<T> next) {
+            this.next = next;
+        }
+
+        public Node<T> getPrev() {
+            return prev;
+        }
+
+        public void setPrev(Node<T> prev) {
+            this.prev = prev;
+        }
+
         Node<T> next;
         Node<T> prev;
     }
@@ -84,6 +134,14 @@ public class DeQueue<T> implements Iterable<T> {
 
     private class DeQueueIterator implements Iterator<T> {
         private Node<T> current = first;
+
+        public Node<T> getCurrent() {
+            return current;
+        }
+
+        public void setCurrent(Node<T> current) {
+            this.current = current;
+        }
 
         @Override
         public boolean hasNext() {

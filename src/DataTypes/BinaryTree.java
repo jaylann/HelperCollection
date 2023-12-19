@@ -16,6 +16,14 @@ import java.util.Stack;
 public class BinaryTree<T extends Comparable<T>> {
     private Node<T> root;
 
+    public Node<T> getRoot() {
+        return root;
+    }
+
+    public void setRoot(Node<T> root) {
+        this.root = root;
+    }
+
     private static class Node<T> {
         T data;
         Node<T> left, right;
@@ -76,6 +84,23 @@ public class BinaryTree<T extends Comparable<T>> {
 
     public class BinaryTreeIterator implements Iterator<T> {
         private Stack<Node<T>> stack;
+
+        public Stack<Node<T>> getStack() {
+            return stack;
+        }
+
+        public void setStack(Stack<Node<T>> stack) {
+            this.stack = stack;
+        }
+
+        public Traversal getTraversalType() {
+            return traversalType;
+        }
+
+        public void setTraversalType(Traversal traversalType) {
+            this.traversalType = traversalType;
+        }
+
         private Traversal traversalType;
 
         public BinaryTreeIterator(Traversal traversalType) {

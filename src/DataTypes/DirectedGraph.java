@@ -49,10 +49,42 @@ public class DirectedGraph<T> {
         return new GraphIterator(order);
     }
 
+    public Map<T, List<T>> getAdjacencyList() {
+        return adjacencyList;
+    }
+
+    public void setAdjacencyList(Map<T, List<T>> adjacencyList) {
+        this.adjacencyList = adjacencyList;
+    }
+
     private class GraphIterator implements Iterator<T> {
         private Set<T> visited;
         private Stack<T> stack;
         private TraversalOrder order;
+
+        public Set<T> getVisited() {
+            return visited;
+        }
+
+        public void setVisited(Set<T> visited) {
+            this.visited = visited;
+        }
+
+        public Stack<T> getStack() {
+            return stack;
+        }
+
+        public void setStack(Stack<T> stack) {
+            this.stack = stack;
+        }
+
+        public TraversalOrder getOrder() {
+            return order;
+        }
+
+        public void setOrder(TraversalOrder order) {
+            this.order = order;
+        }
 
         public GraphIterator(TraversalOrder order) {
             visited = new HashSet<>();

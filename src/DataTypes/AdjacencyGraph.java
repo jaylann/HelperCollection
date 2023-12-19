@@ -129,4 +129,11 @@ public class AdjacencyGraph<T> implements Iterable<T> {
 
     }
 
+    public Map<T, List<T>> getAdjacencyList() {
+        return adjacencyList;
+    }
+
+    public void setAdjacencyList(Map<T, List<T>> adjacencyList) {
+        this.adjacencyList = adjacencyList;
+    }
 }

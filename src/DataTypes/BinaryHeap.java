@@ -124,5 +124,13 @@ public class BinaryHeap<T extends Comparable<T>> implements Iterable<T> {
             }
         };
     }
+
+    public void setHeap(ArrayList<T> heap) {
+        this.heap = heap;
+    }
+
+    public void setMinHeap(boolean minHeap) {
+        isMinHeap = minHeap;
+    }
 }
 

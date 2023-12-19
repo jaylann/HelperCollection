@@ -12,6 +12,14 @@ package DataTypes;
 import java.util.*;
 
 public class UnweightedGraph<T> implements Iterable<T> {
+    public Map<T, List<T>> getAdjacencyList() {
+        return adjacencyList;
+    }
+
+    public void setAdjacencyList(Map<T, List<T>> adjacencyList) {
+        this.adjacencyList = adjacencyList;
+    }
+
     private Map<T, List<T>> adjacencyList;
 
     public UnweightedGraph() {
@@ -53,6 +61,14 @@ public class UnweightedGraph<T> implements Iterable<T> {
 
     private class GraphIterator implements Iterator<T> {
         private Iterator<T> vertexIterator;
+
+        public Iterator<T> getVertexIterator() {
+            return vertexIterator;
+        }
+
+        public void setVertexIterator(Iterator<T> vertexIterator) {
+            this.vertexIterator = vertexIterator;
+        }
 
         public GraphIterator() {
             this.vertexIterator = adjacencyList.keySet().iterator();

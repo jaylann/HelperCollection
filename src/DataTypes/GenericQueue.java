@@ -14,6 +14,31 @@ import java.util.NoSuchElementException;
 
 public class GenericQueue<T> implements Iterable<T> {
     private Node<T> first; // beginning of the queue
+
+    public Node<T> getFirst() {
+        return first;
+    }
+
+    public void setFirst(Node<T> first) {
+        this.first = first;
+    }
+
+    public Node<T> getLast() {
+        return last;
+    }
+
+    public void setLast(Node<T> last) {
+        this.last = last;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
     private Node<T> last;  // end of the queue
     private int size;      // number of elements in the queue
 
@@ -21,6 +46,22 @@ public class GenericQueue<T> implements Iterable<T> {
     private static class Node<T> {
         private T item;
         private Node<T> next;
+
+        public T getItem() {
+            return item;
+        }
+
+        public void setItem(T item) {
+            this.item = item;
+        }
+
+        public Node<T> getNext() {
+            return next;
+        }
+
+        public void setNext(Node<T> next) {
+            this.next = next;
+        }
     }
 
     public GenericQueue() {
@@ -61,6 +102,14 @@ public class GenericQueue<T> implements Iterable<T> {
     }
 
     private class QueueIterator implements Iterator<T> {
+        public Node<T> getCurrent() {
+            return current;
+        }
+
+        public void setCurrent(Node<T> current) {
+            this.current = current;
+        }
+
         private Node<T> current;
 
         public QueueIterator(Node<T> first) {

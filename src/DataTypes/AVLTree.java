@@ -20,6 +20,10 @@ public class AVLTree<T extends Comparable<T>> implements Iterable<T> {
         return iterator(TraversalType.IN_ORDER);
     }
 
+    public void setRoot(Node root) {
+        this.root = root;
+    }
+
     public enum TraversalType {
         IN_ORDER, PRE_ORDER, POST_ORDER
     }
@@ -52,6 +56,27 @@ public class AVLTree<T extends Comparable<T>> implements Iterable<T> {
 
     public class Node {
         T key;
+
+        public void setKey(T key) {
+            this.key = key;
+        }
+
+        public void setValue(T value) {
+            this.value = value;
+        }
+
+        public void setHeight(int height) {
+            this.height = height;
+        }
+
+        public void setLeft(Node left) {
+            this.left = left;
+        }
+
+        public void setRight(Node right) {
+            this.right = right;
+        }
+
         T value;
         int height;
         Node left;
@@ -210,6 +235,31 @@ public class AVLTree<T extends Comparable<T>> implements Iterable<T> {
     private class AVLTreeIterator implements Iterator<T> {
         private Stack<Node> stack = new Stack<>();
         private TraversalType traversalType;
+
+        public Stack<Node> getStack() {
+            return stack;
+        }
+
+        public void setStack(Stack<Node> stack) {
+            this.stack = stack;
+        }
+
+        public TraversalType getTraversalType() {
+            return traversalType;
+        }
+
+        public void setTraversalType(TraversalType traversalType) {
+            this.traversalType = traversalType;
+        }
+
+        public Node getLastNodeVisited() {
+            return lastNodeVisited;
+        }
+
+        public void setLastNodeVisited(Node lastNodeVisited) {
+            this.lastNodeVisited = lastNodeVisited;
+        }
+
         private Node lastNodeVisited; // Needed for post-order traversal
 
         public AVLTreeIterator(Node root, TraversalType traversalType) {

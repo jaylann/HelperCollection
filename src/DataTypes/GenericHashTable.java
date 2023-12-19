@@ -16,6 +16,23 @@ import java.util.LinkedList;
 public class GenericHashTable<K, V> {
     private static final int INITIAL_CAPACITY = 16;
     private ArrayList<LinkedList<Entry<K, V>>> bucketArray;
+
+    public ArrayList<LinkedList<Entry<K, V>>> getBucketArray() {
+        return bucketArray;
+    }
+
+    public void setBucketArray(ArrayList<LinkedList<Entry<K, V>>> bucketArray) {
+        this.bucketArray = bucketArray;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
     private int size;
 
     public GenericHashTable() {
@@ -98,10 +115,43 @@ public class GenericHashTable<K, V> {
             this.key = key;
             this.value = value;
         }
+
+        public K getKey() {
+            return key;
+        }
+
+        public void setKey(K key) {
+            this.key = key;
+        }
+
+        public V getValue() {
+            return value;
+        }
+
+        public void setValue(V value) {
+            this.value = value;
+        }
     }
 
     private class HashTableIterator implements Iterator<Entry<K, V>> {
         private int currentBucket;
+
+        public int getCurrentBucket() {
+            return currentBucket;
+        }
+
+        public void setCurrentBucket(int currentBucket) {
+            this.currentBucket = currentBucket;
+        }
+
+        public Iterator<Entry<K, V>> getBucketIterator() {
+            return bucketIterator;
+        }
+
+        public void setBucketIterator(Iterator<Entry<K, V>> bucketIterator) {
+            this.bucketIterator = bucketIterator;
+        }
+
         private Iterator<Entry<K, V>> bucketIterator;
 
         public HashTableIterator() {

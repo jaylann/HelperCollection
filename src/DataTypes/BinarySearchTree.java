@@ -15,8 +15,29 @@ import java.util.Stack;
 public class BinarySearchTree<T extends Comparable<T>> {
     private Node root;
 
+    public Node getRoot() {
+        return root;
+    }
+
+    public void setRoot(Node root) {
+        this.root = root;
+    }
+
     private class Node {
         T data;
+
+        public void setData(T data) {
+            this.data = data;
+        }
+
+        public void setLeft(Node left) {
+            this.left = left;
+        }
+
+        public void setRight(Node right) {
+            this.right = right;
+        }
+
         Node left, right;
 
         public Node(T data) {
@@ -82,6 +103,22 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
 
     private class BSTIterator implements Iterator<T> {
+        public Stack<Node> getStack() {
+            return stack;
+        }
+
+        public void setStack(Stack<Node> stack) {
+            this.stack = stack;
+        }
+
+        public TraversalOrder getOrder() {
+            return order;
+        }
+
+        public void setOrder(TraversalOrder order) {
+            this.order = order;
+        }
+
         private Stack<Node> stack = new Stack<>();
         private TraversalOrder order;
 

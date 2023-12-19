@@ -12,9 +12,42 @@ package DataTypes;
 import java.util.*;
 
 public class WeightedGraph {
+    public Map<Integer, List<Edge>> getAdjacencyList() {
+        return adjacencyList;
+    }
+
+    public void setAdjacencyList(Map<Integer, List<Edge>> adjacencyList) {
+        this.adjacencyList = adjacencyList;
+    }
+
     private class Edge {
         int source;
         int destination;
+
+        public int getSource() {
+            return source;
+        }
+
+        public void setSource(int source) {
+            this.source = source;
+        }
+
+        public int getDestination() {
+            return destination;
+        }
+
+        public void setDestination(int destination) {
+            this.destination = destination;
+        }
+
+        public double getWeight() {
+            return weight;
+        }
+
+        public void setWeight(double weight) {
+            this.weight = weight;
+        }
+
         double weight;
 
         public Edge(int source, int destination, double weight) {
@@ -47,6 +80,31 @@ public class WeightedGraph {
 
     private class GraphIterator implements Iterator<Integer> {
         private Set<Integer> visited;
+
+        public Set<Integer> getVisited() {
+            return visited;
+        }
+
+        public void setVisited(Set<Integer> visited) {
+            this.visited = visited;
+        }
+
+        public Stack<Integer> getStack() {
+            return stack;
+        }
+
+        public void setStack(Stack<Integer> stack) {
+            this.stack = stack;
+        }
+
+        public TraversalOrder getOrder() {
+            return order;
+        }
+
+        public void setOrder(TraversalOrder order) {
+            this.order = order;
+        }
+
         private Stack<Integer> stack;
         private TraversalOrder order;
 

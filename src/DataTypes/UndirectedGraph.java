@@ -14,6 +14,14 @@ import java.util.*;
 public class UndirectedGraph<T> {
     private Map<T, List<T>> adjList;
 
+    public Map<T, List<T>> getAdjList() {
+        return adjList;
+    }
+
+    public void setAdjList(Map<T, List<T>> adjList) {
+        this.adjList = adjList;
+    }
+
     public UndirectedGraph() {
         adjList = new HashMap<>();
     }
@@ -52,6 +60,31 @@ public class UndirectedGraph<T> {
 
     private class GraphIterator implements Iterator<T> {
         private Set<T> visited;
+
+        public Set<T> getVisited() {
+            return visited;
+        }
+
+        public void setVisited(Set<T> visited) {
+            this.visited = visited;
+        }
+
+        public Stack<T> getStack() {
+            return stack;
+        }
+
+        public void setStack(Stack<T> stack) {
+            this.stack = stack;
+        }
+
+        public TraversalOrder getOrder() {
+            return order;
+        }
+
+        public void setOrder(TraversalOrder order) {
+            this.order = order;
+        }
+
         private Stack<T> stack;
         private TraversalOrder order;
 

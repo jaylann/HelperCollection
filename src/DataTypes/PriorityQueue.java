@@ -16,6 +16,14 @@ import java.util.NoSuchElementException;
 public class PriorityQueue<T extends Comparable<T>> implements Iterable<T> {
     private ArrayList<T> heap;
 
+    public ArrayList<T> getHeap() {
+        return heap;
+    }
+
+    public void setHeap(ArrayList<T> heap) {
+        this.heap = heap;
+    }
+
     public PriorityQueue() {
         heap = new ArrayList<>();
     }
@@ -93,6 +101,14 @@ public class PriorityQueue<T extends Comparable<T>> implements Iterable<T> {
     }
 
     private class PriorityQueueIterator implements Iterator<T> {
+        public PriorityQueue<T> getCopy() {
+            return copy;
+        }
+
+        public void setCopy(PriorityQueue<T> copy) {
+            this.copy = copy;
+        }
+
         private PriorityQueue<T> copy;
 
         public PriorityQueueIterator() {

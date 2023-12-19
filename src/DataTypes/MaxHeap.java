@@ -14,6 +14,14 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class MaxHeap<T extends Comparable<T>> implements Iterable<T> {
+    public ArrayList<T> getHeap() {
+        return heap;
+    }
+
+    public void setHeap(ArrayList<T> heap) {
+        this.heap = heap;
+    }
+
     private ArrayList<T> heap;
 
     public MaxHeap() {
@@ -80,6 +88,14 @@ public class MaxHeap<T extends Comparable<T>> implements Iterable<T> {
     }
 
     private class HeapIterator implements Iterator<T> {
+        public int getCurrentIndex() {
+            return currentIndex;
+        }
+
+        public void setCurrentIndex(int currentIndex) {
+            this.currentIndex = currentIndex;
+        }
+
         private int currentIndex = 0;
 
         @Override

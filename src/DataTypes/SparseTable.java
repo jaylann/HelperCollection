@@ -14,6 +14,39 @@ import java.util.NoSuchElementException;
 
 public class SparseTable<T extends Comparable<T>> implements Iterable<T> {
     private Object[] data;
+
+    public Object[] getData() {
+        return data;
+    }
+
+    public void setData(Object[] data) {
+        this.data = data;
+    }
+
+    public Comparable[][] getSparseTable() {
+        return sparseTable;
+    }
+
+    public void setSparseTable(Comparable[][] sparseTable) {
+        this.sparseTable = sparseTable;
+    }
+
+    public int[] getLogTable() {
+        return logTable;
+    }
+
+    public void setLogTable(int[] logTable) {
+        this.logTable = logTable;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
     private Comparable[][] sparseTable;
     private int[] logTable;
     private int size;

@@ -15,6 +15,22 @@ public class DisjointSet<T> implements Iterable<T> {
     private Map<T, T> parent = new HashMap<>();
     private Map<T, Integer> rank = new HashMap<>();
 
+    public Map<T, T> getParent() {
+        return parent;
+    }
+
+    public void setParent(Map<T, T> parent) {
+        this.parent = parent;
+    }
+
+    public Map<T, Integer> getRank() {
+        return rank;
+    }
+
+    public void setRank(Map<T, Integer> rank) {
+        this.rank = rank;
+    }
+
     public void insert(T item) {
         if (!parent.containsKey(item)) {
             parent.put(item, item);
@@ -67,6 +83,14 @@ public class DisjointSet<T> implements Iterable<T> {
     }
 
     private class DisjointSetIterator implements Iterator<T> {
+        public Iterator<T> getIt() {
+            return it;
+        }
+
+        public void setIt(Iterator<T> it) {
+            this.it = it;
+        }
+
         private Iterator<T> it = parent.keySet().iterator();
 
         @Override

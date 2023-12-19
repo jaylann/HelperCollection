@@ -65,10 +65,46 @@ public class AdjacencyMatrixGraph implements Iterable<AdjacencyMatrixGraph.Edge>
         return new GraphIterator();
     }
 
+    public int[][] getAdjacencyMatrix() {
+        return adjacencyMatrix;
+    }
+
+    public void setAdjacencyMatrix(int[][] adjacencyMatrix) {
+        this.adjacencyMatrix = adjacencyMatrix;
+    }
+
+    public void setNumVertices(int numVertices) {
+        this.numVertices = numVertices;
+    }
+
     private class GraphIterator implements Iterator<Edge> {
         private int currentRow = 0;
         private int currentCol = -1;
         private Edge nextEdge = null;
+
+        public int getCurrentRow() {
+            return currentRow;
+        }
+
+        public void setCurrentRow(int currentRow) {
+            this.currentRow = currentRow;
+        }
+
+        public int getCurrentCol() {
+            return currentCol;
+        }
+
+        public void setCurrentCol(int currentCol) {
+            this.currentCol = currentCol;
+        }
+
+        public Edge getNextEdge() {
+            return nextEdge;
+        }
+
+        public void setNextEdge(Edge nextEdge) {
+            this.nextEdge = nextEdge;
+        }
 
         @Override
         public boolean hasNext() {
@@ -109,6 +145,15 @@ public class AdjacencyMatrixGraph implements Iterable<AdjacencyMatrixGraph.Edge>
     // Helper class to represent an edge
     public static class Edge {
         public final int source;
+
+        public int getSource() {
+            return source;
+        }
+
+        public int getDestination() {
+            return destination;
+        }
+
         public final int destination;
 
         public Edge(int source, int destination) {

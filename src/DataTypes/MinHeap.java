@@ -82,8 +82,24 @@ public class MinHeap<T extends Comparable<T>> implements Iterable<T> {
         return new HeapIterator();
     }
 
+    public List<T> getHeap() {
+        return heap;
+    }
+
+    public void setHeap(List<T> heap) {
+        this.heap = heap;
+    }
+
     private class HeapIterator implements Iterator<T> {
         private MinHeap<T> copy;
+
+        public MinHeap<T> getCopy() {
+            return copy;
+        }
+
+        public void setCopy(MinHeap<T> copy) {
+            this.copy = copy;
+        }
 
         public HeapIterator() {
             copy = new MinHeap<>();

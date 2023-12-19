@@ -18,9 +18,50 @@ import java.util.Queue;
 public class SuffixTree {
     private static final String ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public Node getRoot() {
+        return root;
+    }
+
+    public void setRoot(Node root) {
+        this.root = root;
+    }
+
     private class Node {
         Map<Character, Node> children = new HashMap<>();
         int startIndex;
+
+        public Map<Character, Node> getChildren() {
+            return children;
+        }
+
+        public void setChildren(Map<Character, Node> children) {
+            this.children = children;
+        }
+
+        public int getStartIndex() {
+            return startIndex;
+        }
+
+        public void setStartIndex(int startIndex) {
+            this.startIndex = startIndex;
+        }
+
+        public Integer getEndIndex() {
+            return endIndex;
+        }
+
+        public void setEndIndex(Integer endIndex) {
+            this.endIndex = endIndex;
+        }
+
         Integer endIndex;
 
         Node(int start, Integer end) {
