@@ -13,39 +13,94 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Stack;
 
-public class AVLTree<T extends Comparable<T>> {
+public class AVLTree<T extends Comparable<T>> implements Iterable<T> {
 
-    private enum TraversalType {
+    @Override
+    public Iterator<T> iterator() {
+        return iterator(TraversalType.IN_ORDER);
+    }
+
+    public enum TraversalType {
         IN_ORDER, PRE_ORDER, POST_ORDER
     }
 
-    private class Node {
-        T key;
-        int height;
-        Node left, right;
+    public T get(T key) {
+        Node node = getNode(root, key);
+        return node == null ? null : node.value;
+    }
 
-        public Node(T key) {
+    // Helper method to find a node with a given key
+    private Node getNode(Node node, T key) {
+        while (node != null) {
+            int cmp = key.compareTo(node.key);
+            if (cmp < 0) {
+                node = node.left;
+            } else if (cmp > 0) {
+                node = node.right;
+            } else {
+                return node; // Key found
+            }
+        }
+        return null; // Key not found
+    }
+
+    // Method to check if a key exists in the tree
+    public boolean search(T key) {
+        return getNode(root, key) != null;
+    }
+
+
+    public class Node {
+        T key;
+        T value;
+        int height;
+        Node left;
+
+        public T getKey() {
+            return key;
+        }
+
+        public T getValue() {
+            return value;
+        }
+
+        public int getHeight() {
+            return height;
+        }
+
+        public Node getLeft() {
+            return left;
+        }
+
+        public Node getRight() {
+            return right;
+        }
+
+        Node right;
+
+        public Node(T key, T value) {
             this.key = key;
+            this.value = value;
             this.height = 1;
         }
     }
 
     private Node root;
 
-    public void insert(T key) {
-        root = insert(root, key);
+    public void insert(T key, T value) {
+        root = insert(root, key, value);
     }
 
-    private Node insert(Node node, T key) {
+    private Node insert(Node node, T key, T value) {
         if (node == null) {
-            return new Node(key);
+            return new Node(key, value);
         }
 
         int cmp = key.compareTo(node.key);
         if (cmp < 0) {
-            node.left = insert(node.left, key);
+            node.left = insert(node.left, key, value);
         } else if (cmp > 0) {
-            node.right = insert(node.right, key);
+            node.right = insert(node.right, key, value);
         } else {
             return node; // Duplicate keys not allowed
         }
@@ -74,8 +129,10 @@ public class AVLTree<T extends Comparable<T>> {
             } else {
                 Node mostLeftChild = mostLeftChild(node.right);
                 node.key = mostLeftChild.key;
+                node.value = mostLeftChild.value; // Update the value as well
                 node.right = delete(node.right, mostLeftChild.key);
             }
+
         }
 
         if (node != null) {
@@ -146,19 +203,35 @@ public class AVLTree<T extends Comparable<T>> {
         return new AVLTreeIterator(root, traversalType);
     }
 
+    public Node getRoot() {
+        return root;
+    }
+
     private class AVLTreeIterator implements Iterator<T> {
         private Stack<Node> stack = new Stack<>();
         private TraversalType traversalType;
+        private Node lastNodeVisited; // Needed for post-order traversal
 
         public AVLTreeIterator(Node root, TraversalType traversalType) {
             this.traversalType = traversalType;
-            pushLeft(root);
+            if (traversalType == TraversalType.PRE_ORDER) {
+                pushPreOrder(root);
+            } else {
+                pushLeft(root);
+            }
+            lastNodeVisited = null;
         }
 
         private void pushLeft(Node node) {
             while (node != null) {
                 stack.push(node);
                 node = node.left;
+            }
+        }
+
+        private void pushPreOrder(Node node) {
+            if (node != null) {
+                stack.push(node);
             }
         }
 
@@ -171,21 +244,46 @@ public class AVLTree<T extends Comparable<T>> {
         public T next() {
             if (!hasNext()) throw new NoSuchElementException();
 
-            Node current = stack.pop();
-            T key = current.key;
+            Node current;
+            switch (traversalType) {
+                case IN_ORDER:
+                    current = stack.pop();
+                    T key = current.key;
+                    if (current.right != null) {
+                        pushLeft(current.right);
+                    }
+                    return key;
 
-            if (traversalType == TraversalType.IN_ORDER) {
-                if (current.right != null) {
-                    pushLeft(current.right);
-                }
-            } else if (traversalType == TraversalType.PRE_ORDER) {
-                // Implementation for pre-order
-            } else if (traversalType == TraversalType.POST_ORDER) {
-                // Implementation for post-order
+                case PRE_ORDER:
+                    current = stack.pop();
+                    T keyValue = current.key;
+                    if (current.right != null) {
+                        pushPreOrder(current.right);
+                    }
+                    if (current.left != null) {
+                        pushPreOrder(current.left);
+                    }
+                    return keyValue;
+
+                case POST_ORDER:
+                    while (true) {
+                        current = stack.peek();
+                        if (current.right != null && lastNodeVisited != current.right) {
+                            pushLeft(current.right);
+                        } else if (current.left == null || lastNodeVisited == current) {
+                            stack.pop();
+                            lastNodeVisited = current;
+                            return current.key;
+                        } else {
+                            lastNodeVisited = null;
+                        }
+                    }
+
+                default:
+                    throw new UnsupportedOperationException("Unsupported traversal type");
             }
-
-            return key;
         }
     }
+
 }
 

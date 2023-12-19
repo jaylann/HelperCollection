@@ -12,7 +12,7 @@ package DataTypes;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class AdjacencyMatrixGraph {
+public class AdjacencyMatrixGraph implements Iterable<AdjacencyMatrixGraph.Edge> {
     private int[][] adjacencyMatrix;
     private int numVertices;
 
@@ -60,54 +60,68 @@ public class AdjacencyMatrixGraph {
         }
     }
 
-    // Inner class for implementing Iterator
-    private class AdjacencyMatrixIterator implements Iterator<Integer> {
-        private int row;
-        private int nextCol;
+    @Override
+    public Iterator<Edge> iterator() {
+        return new GraphIterator();
+    }
 
-        public AdjacencyMatrixIterator(int row) {
-            this.row = row;
-            this.nextCol = -1;
-            advance();
-        }
-
-        private void advance() {
-            nextCol++;
-            while (nextCol < numVertices && adjacencyMatrix[row][nextCol] == 0) {
-                nextCol++;
-            }
-        }
+    private class GraphIterator implements Iterator<Edge> {
+        private int currentRow = 0;
+        private int currentCol = -1;
+        private Edge nextEdge = null;
 
         @Override
         public boolean hasNext() {
-            return nextCol < numVertices;
+            if (nextEdge != null) {
+                return true;
+            }
+            nextEdge = findNextEdge();
+            return nextEdge != null;
         }
 
         @Override
-        public Integer next() {
-            if (!hasNext()) {
+        public Edge next() {
+            if (nextEdge == null && !hasNext()) {
                 throw new NoSuchElementException();
             }
-            int currentCol = nextCol;
-            advance();
-            return currentCol;
+            Edge edge = nextEdge;
+            nextEdge = null;
+            return edge;
         }
-    }
 
-    // Provides an iterator for a given vertex
-    public Iterator<Integer> iterator(int vertex) {
-        checkVertex(vertex);
-        return new AdjacencyMatrixIterator(vertex);
-    }
-
-    // For debugging: Prints the adjacency matrix
-    public void printMatrix() {
-        for (int i = 0; i < numVertices; i++) {
-            for (int j = 0; j < numVertices; j++) {
-                System.out.print(adjacencyMatrix[i][j] + " ");
+        private Edge findNextEdge() {
+            while (currentRow < numVertices) {
+                while (++currentCol < numVertices) {
+                    if (adjacencyMatrix[currentRow][currentCol] == 1) {
+                        // Skip duplicate edges for undirected graph
+                        if (currentRow < currentCol) {
+                            return new Edge(currentRow, currentCol);
+                        }
+                    }
+                }
+                currentRow++;
+                currentCol = -1;
             }
-            System.out.println();
+            return null;
         }
     }
+
+    // Helper class to represent an edge
+    public static class Edge {
+        public final int source;
+        public final int destination;
+
+        public Edge(int source, int destination) {
+            this.source = source;
+            this.destination = destination;
+        }
+
+    }
+
+    public static void main(String[] args) {
+
+    }
+
+
 }
 
