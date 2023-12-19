@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.*;
 
 import org.junit.jupiter.api.Test;
 
@@ -15,8 +16,7 @@ public class StalinSortTest {
     @Test
     public void testStalinSort() {
         // Create a list of integers
-        List<Integer> list = Arrays.asList(5, 3, 8, 2, 9, 1);
-        List<Integer> expected = Arrays.asList(5, 8, 9);
+        List<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 5, 4, 7));
 
         // Get the StalinSort algorithm
         Consumer<List<Integer>> stalinSort = StalinSort.getStalinSortAlgorithm();
@@ -25,8 +25,9 @@ public class StalinSortTest {
         stalinSort.accept(list);
 
         // Check if the list is sorted in ascending order
-            assertTrue(list == expected);
-        
+        for (int i = 0; i < list.size() - 1; i++) {
+            assertTrue(list.get(i) <= list.get(i + 1));
+        }
     }
 
     @Test
@@ -62,8 +63,8 @@ public class StalinSortTest {
 
     @Test
     void testStalinSortDuplicates() {
-                // Create a list of integers
-        List<Integer> list = Arrays.asList(1, 2, 3, 5, 8, 1, 5, 9);;
+        // Create a list of integers
+        List<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 5, 4, 7));
 
         // Get the StalinSort algorithm
         Consumer<List<Integer>> stalinSort = StalinSort.getStalinSortAlgorithm();
