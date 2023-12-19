@@ -42,6 +42,8 @@ public class StalinSortTest {
         stalinSort.accept(list);
 
         assertTrue(list.isEmpty());
+
+        int t = 5;
     }
 
     @Test
