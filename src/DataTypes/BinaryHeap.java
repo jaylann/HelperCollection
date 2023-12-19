@@ -43,6 +43,14 @@ public class BinaryHeap<T extends Comparable<T>> implements Iterable<T> {
         return removedValue;
     }
 
+    public ArrayList<T> getHeap() {
+        return heap;
+    }
+
+    public boolean isMinHeap() {
+        return isMinHeap;
+    }
+
     private void siftUp(int index) {
         T value = heap.get(index);
         while (index > 0) {
