@@ -10,6 +10,7 @@
 
 
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class IntHelperTest {
@@ -55,8 +56,8 @@ class IntHelperTest {
         assertFalse(IntHelper.isLog(3, 20));
 
         // Test with base as 0, 1, and a negative number
-        assertThrows(IllegalArgumentException.class, () ->IntHelper.isLog(0, 1));
-        assertThrows(IllegalArgumentException.class, () ->IntHelper.isLog(1, 1));
+        assertThrows(IllegalArgumentException.class, () -> IntHelper.isLog(0, 1));
+        assertThrows(IllegalArgumentException.class, () -> IntHelper.isLog(1, 1));
         assertThrows(IllegalArgumentException.class, () -> IntHelper.isLog(-1, 1));
 
         // Test with exponent as 0 and a negative number
@@ -142,7 +143,7 @@ class IntHelperTest {
     @org.junit.jupiter.api.Test
     void lcm() {
         assertEquals(0, IntHelper.lcm(0, 5)); // One integer zero
-        assertThrows(Exception.class,()-> IntHelper.lcm(0, 0)); // Both integers zero
+        assertThrows(Exception.class, () -> IntHelper.lcm(0, 0)); // Both integers zero
         assertEquals(20, IntHelper.lcm(4, 5)); // Coprime integers
         assertEquals(20, IntHelper.lcm(-4, 5)); // One integer negative
     }
@@ -204,7 +205,6 @@ class IntHelperTest {
     }
 
 
-
     @Test
     void testSquare() {
         assertEquals(9, IntHelper.square(3));
@@ -221,6 +221,7 @@ class IntHelperTest {
         assertEquals(4L, IntHelper.square(2L));
         assertEquals(16L, IntHelper.square(-4L));
     }
+
     @Test
     void testSumOfSquares() {
         assertEquals(25, IntHelper.sumOfSquares(3, 4));
@@ -233,6 +234,7 @@ class IntHelperTest {
         assertEquals(Long.MAX_VALUE, IntHelper.sumOfSquares(3037000500L, 3037000500L)); // Test for long overflow
         assertEquals(0L, IntHelper.sumOfSquares(0L, 0L));
     }
+
     @Test
     void testCube() {
         assertEquals(27, IntHelper.cube(3));
@@ -247,6 +249,7 @@ class IntHelperTest {
         assertEquals(Long.MAX_VALUE, IntHelper.cube(2097152L)); // Test for long overflow
         assertEquals(8L, IntHelper.cube(2L));
     }
+
     @Test
     void testAverage() {
         assertEquals(2, IntHelper.average(1, 2, 3));
@@ -255,6 +258,7 @@ class IntHelperTest {
         assertEquals(Integer.MAX_VALUE, IntHelper.average(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE));
         assertEquals(Integer.MIN_VALUE, IntHelper.average(Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE));
     }
+
     @Test
     void testIsPythagoreanTriple() {
         assertTrue(IntHelper.isPythagoreanTriple(3, 4, 5));
