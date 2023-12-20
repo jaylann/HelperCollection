@@ -1,7 +1,7 @@
 /*
  * - Lanfermann, Justin (jaylann). "HelperCollection." GitHub repository.
  *   https://github.com/jaylann/HelperCollection.
- *   Last commit: Mon, 18th December 2023, 18:15
+ *   Last commit: Wed, 20th December 2023, 17:00
  *
  * This file is part of the "HelperCollection" project, developed and maintained by
  * Justin Lanfermann (jaylann). For more information, updates, collaborators and terms of use,
