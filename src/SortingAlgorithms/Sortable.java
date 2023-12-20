@@ -70,7 +70,7 @@ public class Sortable {
             throw new IllegalArgumentException("Iterable cannot be null.");
         }
     }
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         List<Integer> numbers = Arrays.asList(3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5);
 
         // Sorting a list using BubbleSort
@@ -81,5 +81,5 @@ public class Sortable {
         Integer[] numberArray = {3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5};
         Sortable.sort(Arrays.asList(numberArray), BubbleSort.getBubbleSortAlgorithm());
         System.out.println("Sorted Iterable: " + Arrays.toString(numberArray));
-    }
+    }*/
 }
