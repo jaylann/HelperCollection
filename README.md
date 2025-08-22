@@ -40,6 +40,9 @@ If you need help or have any questions, please open an issue in the repository, 
 
 ---
 
-Happy Coding!
+[Read more about this on my blog](https://www.lanfermann.dev/blogs/the-billionth-fibonacci-number)
 
----
+<p align="center">
+  Made with ❤️ by <a href="https://lanfermann.dev">Justin Lanfermann</a>
+</p>
+
